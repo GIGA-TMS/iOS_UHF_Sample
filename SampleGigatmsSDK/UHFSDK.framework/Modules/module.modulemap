@@ -1,0 +1,6 @@
+framework module UHFSDK {
+  umbrella header "UHFSDK.h"
+
+  export *
+  module * { export * }
+}
