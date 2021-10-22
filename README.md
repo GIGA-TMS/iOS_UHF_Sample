@@ -14,13 +14,15 @@ iOS_UHF_Sample is a sample App to demonstrate how to use UHFSDK library.
 
 * iOS 12.0+
 * Xcode 12.0+
+* Sample v3.1.5.2
+* SDK v3.1.5.2
 
 ## Installation
 
-* You can download this project and open with Xcode.
+* Please download this project and open with Xcode.
 
 ## Documents
 
-* You can reference UHF SDK document [here](https://github.com/GIGA-TMS/doc_iOS_UHFSDK)
+* Please reference UHF SDK document [here](https://github.com/GIGA-TMS/doc_iOS_UHFSDK)
 
 
