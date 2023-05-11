@@ -46,6 +46,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 -(void)UM800LdidGetIpAddress:(NSString*)ipAddress;
 -(void)UM800LdidGetBleMacAddress:(NSData*)data;
+-(void)UM800LdidGetBleDeviceName:(NSData*)data;
 
 @end
 

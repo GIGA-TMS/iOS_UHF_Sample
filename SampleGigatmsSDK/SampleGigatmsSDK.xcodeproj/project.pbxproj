@@ -3,29 +3,28 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 50;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0444982A24F11A4E00DADF77 /* NewSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0444982924F11A4E00DADF77 /* NewSettingViewController.m */; };
-		0444982D24F15D7E00DADF77 /* NewInventoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0444982C24F15D7E00DADF77 /* NewInventoryViewController.m */; };
-		0444983024F1676D00DADF77 /* NewReadWriteTagViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0444982F24F1676D00DADF77 /* NewReadWriteTagViewController.m */; };
-		0444983324F167CB00DADF77 /* NewAdvancedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0444983224F167CB00DADF77 /* NewAdvancedViewController.m */; };
-		0444983624F1F54A00DADF77 /* NewDevConnStatusViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0444983524F1F54A00DADF77 /* NewDevConnStatusViewController.m */; };
-		04EBDA9D24C060760003D6B6 /* TestingApiViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04EBDA9C24C060760003D6B6 /* TestingApiViewController.m */; };
-		412AEFC4225DDABF001C220D /* DevDetailTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 412AEFC3225DDABF001C220D /* DevDetailTabBarViewController.m */; };
+		33AAFCD62A0CEE9400DC0721 /* DevDetailTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33AAFCD42A0CEE9300DC0721 /* DevDetailTabBarViewController.m */; };
+		33AAFCD72A0CEE9400DC0721 /* ScanDebugLogTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33AAFCD52A0CEE9400DC0721 /* ScanDebugLogTableViewController.m */; };
+		33AAFCD82A0CEE9400DC0721 /* ScanDebugLogItemTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 33AAFCD22A0CEE9300DC0721 /* ScanDebugLogItemTableViewCell.m */; };
+		33AAFCEC2A0CEEAD00DC0721 /* NewReadWriteTagViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33AAFCE52A0CEEAD00DC0721 /* NewReadWriteTagViewController.m */; };
+		33AAFCED2A0CEEAD00DC0721 /* NewDevConnStatusViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33AAFCE12A0CEEAC00DC0721 /* NewDevConnStatusViewController.m */; };
+		33AAFCEE2A0CEEAD00DC0721 /* InventoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33AAFCE82A0CEEAD00DC0721 /* InventoryViewController.m */; };
+		33AAFCEF2A0CEEAD00DC0721 /* DevConnStatusViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33AAFCDD2A0CEEAC00DC0721 /* DevConnStatusViewController.m */; };
+		33AAFCF02A0CEEAD00DC0721 /* NewSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33AAFCD92A0CEEAB00DC0721 /* NewSettingViewController.m */; };
+		33AAFCF12A0CEEAD00DC0721 /* NewAdvancedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33AAFCE92A0CEEAD00DC0721 /* NewAdvancedViewController.m */; };
+		33AAFCF22A0CEEAD00DC0721 /* NewInventoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33AAFCDB2A0CEEAB00DC0721 /* NewInventoryViewController.m */; };
+		33AAFCF32A0CEEAD00DC0721 /* ReadWriteTagViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33AAFCE02A0CEEAC00DC0721 /* ReadWriteTagViewController.m */; };
+		33AAFCF42A0CEEAD00DC0721 /* TagItemTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 33AAFCE42A0CEEAD00DC0721 /* TagItemTableViewCell.m */; };
+		33AAFCF52A0CEEC100DC0721 /* UHFSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33AAFCCE2A0CEE7B00DC0721 /* UHFSDK.framework */; };
+		33AAFCF62A0CEEC100DC0721 /* UHFSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 33AAFCCE2A0CEE7B00DC0721 /* UHFSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		4155504D22533321009CD9FD /* BaseDevItemTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4155504C22533321009CD9FD /* BaseDevItemTableViewCell.m */; };
 		4155505422536EEA009CD9FD /* CocoaAsyncSocket.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 418C68BE21912DE700EBC217 /* CocoaAsyncSocket.framework */; };
 		4155505522536EEA009CD9FD /* CocoaAsyncSocket.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 418C68BE21912DE700EBC217 /* CocoaAsyncSocket.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		4162742B2314D46400DDFBAE /* ScanDevV2ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4162742A2314D46400DDFBAE /* ScanDevV2ViewController.m */; };
-		4168F3C62260312C00E059ED /* InventoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4168F3C52260312C00E059ED /* InventoryViewController.m */; };
-		4168F3C92260314C00E059ED /* ReadWriteTagViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4168F3C82260314C00E059ED /* ReadWriteTagViewController.m */; };
-		4168F3CC2260316600E059ED /* Setting1ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4168F3CB2260316600E059ED /* Setting1ViewController.m */; };
-		4168F3CF2260317300E059ED /* Setting2ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4168F3CE2260317300E059ED /* Setting2ViewController.m */; };
-		4168F3D22264796F00E059ED /* TagItemTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4168F3D12264796F00E059ED /* TagItemTableViewCell.m */; };
-		4168F3D522684D6F00E059ED /* DevConnStatusViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4168F3D422684D6F00E059ED /* DevConnStatusViewController.m */; };
-		4179C92723852B57009D9CE9 /* ScanDebugLogTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4179C92623852B57009D9CE9 /* ScanDebugLogTableViewController.m */; };
-		4179C92A23852C29009D9CE9 /* ScanDebugLogItemTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4179C92923852C29009D9CE9 /* ScanDebugLogItemTableViewCell.m */; };
 		41A5CC122252096D00FF5953 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 41A5CC112252096D00FF5953 /* AppDelegate.m */; };
 		41A5CC1B2252096D00FF5953 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41A5CC192252096D00FF5953 /* Main.storyboard */; };
 		41A5CC1D2252096F00FF5953 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 41A5CC1C2252096F00FF5953 /* Assets.xcassets */; };
@@ -33,8 +32,6 @@
 		41A5CC232252096F00FF5953 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 41A5CC222252096F00FF5953 /* main.m */; };
 		41A5CC2D2252097000FF5953 /* UHFSampleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 41A5CC2C2252097000FF5953 /* UHFSampleTests.m */; };
 		41A5CC382252097000FF5953 /* UHFSampleUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 41A5CC372252097000FF5953 /* UHFSampleUITests.m */; };
-		B2882E4127211DB600B9CC11 /* UHFSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2882E3F27211DA700B9CC11 /* UHFSDK.framework */; platformFilter = ios; };
-		B2882E4227211DB600B9CC11 /* UHFSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B2882E3F27211DA700B9CC11 /* UHFSDK.framework */; platformFilter = ios; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B426DDF9D18533366938BF78 /* libPods-UHFSample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 085813F69E08950A35125222 /* libPods-UHFSample.a */; };
 /* End PBXBuildFile section */
 
@@ -63,7 +60,7 @@
 			dstSubfolderSpec = 10;
 			files = (
 				4155505522536EEA009CD9FD /* CocoaAsyncSocket.framework in Embed Frameworks */,
-				B2882E4227211DB600B9CC11 /* UHFSDK.framework in Embed Frameworks */,
+				33AAFCF62A0CEEC100DC0721 /* UHFSDK.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -72,46 +69,42 @@
 
 /* Begin PBXFileReference section */
 		01885062F80922FAB1893884 /* libPods-TS800SampleTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TS800SampleTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		0444982824F11A4E00DADF77 /* NewSettingViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NewSettingViewController.h; sourceTree = "<group>"; };
-		0444982924F11A4E00DADF77 /* NewSettingViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewSettingViewController.m; sourceTree = "<group>"; };
-		0444982B24F15D7E00DADF77 /* NewInventoryViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NewInventoryViewController.h; sourceTree = "<group>"; };
-		0444982C24F15D7E00DADF77 /* NewInventoryViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewInventoryViewController.m; sourceTree = "<group>"; };
-		0444982E24F1676D00DADF77 /* NewReadWriteTagViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NewReadWriteTagViewController.h; sourceTree = "<group>"; };
-		0444982F24F1676D00DADF77 /* NewReadWriteTagViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewReadWriteTagViewController.m; sourceTree = "<group>"; };
-		0444983124F167CB00DADF77 /* NewAdvancedViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NewAdvancedViewController.h; sourceTree = "<group>"; };
-		0444983224F167CB00DADF77 /* NewAdvancedViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewAdvancedViewController.m; sourceTree = "<group>"; };
-		0444983424F1F54A00DADF77 /* NewDevConnStatusViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NewDevConnStatusViewController.h; sourceTree = "<group>"; };
-		0444983524F1F54A00DADF77 /* NewDevConnStatusViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewDevConnStatusViewController.m; sourceTree = "<group>"; };
-		04EBDA9B24C060760003D6B6 /* TestingApiViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestingApiViewController.h; sourceTree = "<group>"; };
-		04EBDA9C24C060760003D6B6 /* TestingApiViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestingApiViewController.m; sourceTree = "<group>"; };
 		085813F69E08950A35125222 /* libPods-UHFSample.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-UHFSample.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		296C9E2AF57113AA0695EF40 /* Pods-SampleGigatmsSDK.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SampleGigatmsSDK.release.xcconfig"; path = "Pods/Target Support Files/Pods-SampleGigatmsSDK/Pods-SampleGigatmsSDK.release.xcconfig"; sourceTree = "<group>"; };
 		2AFBEB36AEB39C7125FD9C69 /* libPods-TS800SampleUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TS800SampleUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F746DB0B9ED09BAA01139D7 /* Pods-SampleTS800SDK.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SampleTS800SDK.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SampleTS800SDK/Pods-SampleTS800SDK.debug.xcconfig"; sourceTree = "<group>"; };
+		33AAFCCE2A0CEE7B00DC0721 /* UHFSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = UHFSDK.framework; sourceTree = "<group>"; };
+		33AAFCD02A0CEE9300DC0721 /* DevDetailTabBarViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DevDetailTabBarViewController.h; sourceTree = "<group>"; };
+		33AAFCD12A0CEE9300DC0721 /* ScanDebugLogItemTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ScanDebugLogItemTableViewCell.h; sourceTree = "<group>"; };
+		33AAFCD22A0CEE9300DC0721 /* ScanDebugLogItemTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ScanDebugLogItemTableViewCell.m; sourceTree = "<group>"; };
+		33AAFCD32A0CEE9300DC0721 /* ScanDebugLogTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ScanDebugLogTableViewController.h; sourceTree = "<group>"; };
+		33AAFCD42A0CEE9300DC0721 /* DevDetailTabBarViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DevDetailTabBarViewController.m; sourceTree = "<group>"; };
+		33AAFCD52A0CEE9400DC0721 /* ScanDebugLogTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ScanDebugLogTableViewController.m; sourceTree = "<group>"; };
+		33AAFCD92A0CEEAB00DC0721 /* NewSettingViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewSettingViewController.m; sourceTree = "<group>"; };
+		33AAFCDA2A0CEEAB00DC0721 /* UHFSample-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UHFSample-Bridging-Header.h"; sourceTree = "<group>"; };
+		33AAFCDB2A0CEEAB00DC0721 /* NewInventoryViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewInventoryViewController.m; sourceTree = "<group>"; };
+		33AAFCDC2A0CEEAC00DC0721 /* InventoryViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InventoryViewController.h; sourceTree = "<group>"; };
+		33AAFCDD2A0CEEAC00DC0721 /* DevConnStatusViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DevConnStatusViewController.m; sourceTree = "<group>"; };
+		33AAFCDE2A0CEEAC00DC0721 /* NewAdvancedViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NewAdvancedViewController.h; sourceTree = "<group>"; };
+		33AAFCDF2A0CEEAC00DC0721 /* ReadWriteTagViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReadWriteTagViewController.h; sourceTree = "<group>"; };
+		33AAFCE02A0CEEAC00DC0721 /* ReadWriteTagViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ReadWriteTagViewController.m; sourceTree = "<group>"; };
+		33AAFCE12A0CEEAC00DC0721 /* NewDevConnStatusViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewDevConnStatusViewController.m; sourceTree = "<group>"; };
+		33AAFCE22A0CEEAC00DC0721 /* TagItemTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TagItemTableViewCell.h; sourceTree = "<group>"; };
+		33AAFCE32A0CEEAC00DC0721 /* NewReadWriteTagViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NewReadWriteTagViewController.h; sourceTree = "<group>"; };
+		33AAFCE42A0CEEAD00DC0721 /* TagItemTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TagItemTableViewCell.m; sourceTree = "<group>"; };
+		33AAFCE52A0CEEAD00DC0721 /* NewReadWriteTagViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewReadWriteTagViewController.m; sourceTree = "<group>"; };
+		33AAFCE62A0CEEAD00DC0721 /* NewInventoryViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NewInventoryViewController.h; sourceTree = "<group>"; };
+		33AAFCE72A0CEEAD00DC0721 /* NewSettingViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NewSettingViewController.h; sourceTree = "<group>"; };
+		33AAFCE82A0CEEAD00DC0721 /* InventoryViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InventoryViewController.m; sourceTree = "<group>"; };
+		33AAFCE92A0CEEAD00DC0721 /* NewAdvancedViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewAdvancedViewController.m; sourceTree = "<group>"; };
+		33AAFCEA2A0CEEAD00DC0721 /* DevConnStatusViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DevConnStatusViewController.h; sourceTree = "<group>"; };
+		33AAFCEB2A0CEEAD00DC0721 /* NewDevConnStatusViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NewDevConnStatusViewController.h; sourceTree = "<group>"; };
 		4115A3CD236FFD6600276CDB /* UHFSample.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = UHFSample.entitlements; sourceTree = "<group>"; };
 		4115F6C92202DDD50056E8F3 /* LocalAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LocalAuthentication.framework; path = System/Library/Frameworks/LocalAuthentication.framework; sourceTree = SDKROOT; };
-		412AEFC2225DDABF001C220D /* DevDetailTabBarViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DevDetailTabBarViewController.h; sourceTree = "<group>"; };
-		412AEFC3225DDABF001C220D /* DevDetailTabBarViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DevDetailTabBarViewController.m; sourceTree = "<group>"; };
 		4155504B22533321009CD9FD /* BaseDevItemTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = BaseDevItemTableViewCell.h; path = UITools/BaseDevItemTableViewCell.h; sourceTree = "<group>"; };
 		4155504C22533321009CD9FD /* BaseDevItemTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = BaseDevItemTableViewCell.m; path = UITools/BaseDevItemTableViewCell.m; sourceTree = "<group>"; };
 		416274292314D46400DDFBAE /* ScanDevV2ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ScanDevV2ViewController.h; path = UITools/ScanDevV2ViewController.h; sourceTree = "<group>"; };
 		4162742A2314D46400DDFBAE /* ScanDevV2ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = ScanDevV2ViewController.m; path = UITools/ScanDevV2ViewController.m; sourceTree = "<group>"; };
-		4168F3C42260312C00E059ED /* InventoryViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InventoryViewController.h; sourceTree = "<group>"; };
-		4168F3C52260312C00E059ED /* InventoryViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InventoryViewController.m; sourceTree = "<group>"; };
-		4168F3C72260314C00E059ED /* ReadWriteTagViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReadWriteTagViewController.h; sourceTree = "<group>"; };
-		4168F3C82260314C00E059ED /* ReadWriteTagViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ReadWriteTagViewController.m; sourceTree = "<group>"; };
-		4168F3CA2260316600E059ED /* Setting1ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Setting1ViewController.h; sourceTree = "<group>"; };
-		4168F3CB2260316600E059ED /* Setting1ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Setting1ViewController.m; sourceTree = "<group>"; };
-		4168F3CD2260317300E059ED /* Setting2ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Setting2ViewController.h; sourceTree = "<group>"; };
-		4168F3CE2260317300E059ED /* Setting2ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Setting2ViewController.m; sourceTree = "<group>"; };
-		4168F3D02264796F00E059ED /* TagItemTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TagItemTableViewCell.h; sourceTree = "<group>"; };
-		4168F3D12264796F00E059ED /* TagItemTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TagItemTableViewCell.m; sourceTree = "<group>"; };
-		4168F3D322684D6F00E059ED /* DevConnStatusViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DevConnStatusViewController.h; sourceTree = "<group>"; };
-		4168F3D422684D6F00E059ED /* DevConnStatusViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DevConnStatusViewController.m; sourceTree = "<group>"; };
-		4179C92523852B57009D9CE9 /* ScanDebugLogTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ScanDebugLogTableViewController.h; sourceTree = "<group>"; };
-		4179C92623852B57009D9CE9 /* ScanDebugLogTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ScanDebugLogTableViewController.m; sourceTree = "<group>"; };
-		4179C92823852C29009D9CE9 /* ScanDebugLogItemTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ScanDebugLogItemTableViewCell.h; sourceTree = "<group>"; };
-		4179C92923852C29009D9CE9 /* ScanDebugLogItemTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ScanDebugLogItemTableViewCell.m; sourceTree = "<group>"; };
 		4183DBEE2283F8BA00E8A0E0 /* libMBProgressHUD.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libMBProgressHUD.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		418C68BE21912DE700EBC217 /* CocoaAsyncSocket.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = CocoaAsyncSocket.framework; sourceTree = "<group>"; };
 		418C68BF21912DEE00EBC217 /* CocoaAsyncSocket.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; path = CocoaAsyncSocket.framework.dSYM; sourceTree = "<group>"; };
@@ -129,7 +122,6 @@
 		41A5CC332252097000FF5953 /* UHFSampleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UHFSampleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		41A5CC372252097000FF5953 /* UHFSampleUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UHFSampleUITests.m; sourceTree = "<group>"; };
 		41A5CC392252097000FF5953 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		41BDD4772372791300171592 /* UHFSample-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UHFSample-Bridging-Header.h"; sourceTree = "<group>"; };
 		41CC5F362201A2FA00569512 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		423514CE85D2BFA9A5C7AD9B /* Pods-LoginReaderDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LoginReaderDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LoginReaderDemo/Pods-LoginReaderDemo.debug.xcconfig"; sourceTree = "<group>"; };
 		475549469811B20CB791886A /* libPods-TS800Sample.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TS800Sample.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -138,7 +130,6 @@
 		8275009DFC9CBBB12556A6EA /* Pods-UHFSample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UHFSample.debug.xcconfig"; path = "Pods/Target Support Files/Pods-UHFSample/Pods-UHFSample.debug.xcconfig"; sourceTree = "<group>"; };
 		9748CEA67BB19BC88316940D /* libPods-LoginReaderDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-LoginReaderDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6A01CCE1361D22BC6BD0D0D /* libPods-SampleGigatmsSDKUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SampleGigatmsSDKUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		B2882E3F27211DA700B9CC11 /* UHFSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = UHFSDK.framework; sourceTree = "<group>"; };
 		E1F680C220AE0441B607D918 /* libPods-SampleTS800SDK.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SampleTS800SDK.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5A7D5618BF454AD968C5DD7 /* Pods-UHFSample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UHFSample.release.xcconfig"; path = "Pods/Target Support Files/Pods-UHFSample/Pods-UHFSample.release.xcconfig"; sourceTree = "<group>"; };
 		EB99E550186475171503A44C /* Pods-LoginReaderDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LoginReaderDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-LoginReaderDemo/Pods-LoginReaderDemo.release.xcconfig"; sourceTree = "<group>"; };
@@ -153,7 +144,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4155505422536EEA009CD9FD /* CocoaAsyncSocket.framework in Frameworks */,
-				B2882E4127211DB600B9CC11 /* UHFSDK.framework in Frameworks */,
+				33AAFCF52A0CEEC100DC0721 /* UHFSDK.framework in Frameworks */,
 				B426DDF9D18533366938BF78 /* libPods-UHFSample.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -199,12 +190,12 @@
 			isa = PBXGroup;
 			children = (
 				4115A3CD236FFD6600276CDB /* UHFSample.entitlements */,
-				4179C92823852C29009D9CE9 /* ScanDebugLogItemTableViewCell.h */,
-				4179C92923852C29009D9CE9 /* ScanDebugLogItemTableViewCell.m */,
-				4179C92523852B57009D9CE9 /* ScanDebugLogTableViewController.h */,
-				4179C92623852B57009D9CE9 /* ScanDebugLogTableViewController.m */,
-				412AEFC2225DDABF001C220D /* DevDetailTabBarViewController.h */,
-				412AEFC3225DDABF001C220D /* DevDetailTabBarViewController.m */,
+				33AAFCD02A0CEE9300DC0721 /* DevDetailTabBarViewController.h */,
+				33AAFCD42A0CEE9300DC0721 /* DevDetailTabBarViewController.m */,
+				33AAFCD12A0CEE9300DC0721 /* ScanDebugLogItemTableViewCell.h */,
+				33AAFCD22A0CEE9300DC0721 /* ScanDebugLogItemTableViewCell.m */,
+				33AAFCD32A0CEE9300DC0721 /* ScanDebugLogTableViewController.h */,
+				33AAFCD52A0CEE9400DC0721 /* ScanDebugLogTableViewController.m */,
 				4155504A225332DE009CD9FD /* UITools */,
 				41A5CC102252096D00FF5953 /* AppDelegate.h */,
 				41A5CC112252096D00FF5953 /* AppDelegate.m */,
@@ -213,31 +204,25 @@
 				41A5CC1E2252096F00FF5953 /* LaunchScreen.storyboard */,
 				41A5CC212252096F00FF5953 /* Info.plist */,
 				41A5CC222252096F00FF5953 /* main.m */,
-				4168F3D322684D6F00E059ED /* DevConnStatusViewController.h */,
-				4168F3D422684D6F00E059ED /* DevConnStatusViewController.m */,
-				4168F3C42260312C00E059ED /* InventoryViewController.h */,
-				4168F3C52260312C00E059ED /* InventoryViewController.m */,
-				4168F3D02264796F00E059ED /* TagItemTableViewCell.h */,
-				4168F3D12264796F00E059ED /* TagItemTableViewCell.m */,
-				4168F3C72260314C00E059ED /* ReadWriteTagViewController.h */,
-				4168F3C82260314C00E059ED /* ReadWriteTagViewController.m */,
-				4168F3CA2260316600E059ED /* Setting1ViewController.h */,
-				4168F3CB2260316600E059ED /* Setting1ViewController.m */,
-				4168F3CD2260317300E059ED /* Setting2ViewController.h */,
-				4168F3CE2260317300E059ED /* Setting2ViewController.m */,
-				04EBDA9B24C060760003D6B6 /* TestingApiViewController.h */,
-				04EBDA9C24C060760003D6B6 /* TestingApiViewController.m */,
-				41BDD4772372791300171592 /* UHFSample-Bridging-Header.h */,
-				0444982B24F15D7E00DADF77 /* NewInventoryViewController.h */,
-				0444982C24F15D7E00DADF77 /* NewInventoryViewController.m */,
-				0444982E24F1676D00DADF77 /* NewReadWriteTagViewController.h */,
-				0444982F24F1676D00DADF77 /* NewReadWriteTagViewController.m */,
-				0444982824F11A4E00DADF77 /* NewSettingViewController.h */,
-				0444982924F11A4E00DADF77 /* NewSettingViewController.m */,
-				0444983124F167CB00DADF77 /* NewAdvancedViewController.h */,
-				0444983224F167CB00DADF77 /* NewAdvancedViewController.m */,
-				0444983424F1F54A00DADF77 /* NewDevConnStatusViewController.h */,
-				0444983524F1F54A00DADF77 /* NewDevConnStatusViewController.m */,
+				33AAFCEA2A0CEEAD00DC0721 /* DevConnStatusViewController.h */,
+				33AAFCDD2A0CEEAC00DC0721 /* DevConnStatusViewController.m */,
+				33AAFCDC2A0CEEAC00DC0721 /* InventoryViewController.h */,
+				33AAFCE82A0CEEAD00DC0721 /* InventoryViewController.m */,
+				33AAFCDE2A0CEEAC00DC0721 /* NewAdvancedViewController.h */,
+				33AAFCE92A0CEEAD00DC0721 /* NewAdvancedViewController.m */,
+				33AAFCEB2A0CEEAD00DC0721 /* NewDevConnStatusViewController.h */,
+				33AAFCE12A0CEEAC00DC0721 /* NewDevConnStatusViewController.m */,
+				33AAFCE62A0CEEAD00DC0721 /* NewInventoryViewController.h */,
+				33AAFCDB2A0CEEAB00DC0721 /* NewInventoryViewController.m */,
+				33AAFCE32A0CEEAC00DC0721 /* NewReadWriteTagViewController.h */,
+				33AAFCE52A0CEEAD00DC0721 /* NewReadWriteTagViewController.m */,
+				33AAFCE72A0CEEAD00DC0721 /* NewSettingViewController.h */,
+				33AAFCD92A0CEEAB00DC0721 /* NewSettingViewController.m */,
+				33AAFCDF2A0CEEAC00DC0721 /* ReadWriteTagViewController.h */,
+				33AAFCE02A0CEEAC00DC0721 /* ReadWriteTagViewController.m */,
+				33AAFCE22A0CEEAC00DC0721 /* TagItemTableViewCell.h */,
+				33AAFCE42A0CEEAD00DC0721 /* TagItemTableViewCell.m */,
+				33AAFCDA2A0CEEAB00DC0721 /* UHFSample-Bridging-Header.h */,
 			);
 			path = UHFSample;
 			sourceTree = "<group>";
@@ -263,7 +248,7 @@
 		41E40DF520871BBE0062A880 = {
 			isa = PBXGroup;
 			children = (
-				B2882E3F27211DA700B9CC11 /* UHFSDK.framework */,
+				33AAFCCE2A0CEE7B00DC0721 /* UHFSDK.framework */,
 				41A5CC0F2252096D00FF5953 /* UHFSample */,
 				41A5CC2B2252097000FF5953 /* UHFSampleTests */,
 				41A5CC362252097000FF5953 /* UHFSampleUITests */,
@@ -485,25 +470,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				04EBDA9D24C060760003D6B6 /* TestingApiViewController.m in Sources */,
-				4168F3CF2260317300E059ED /* Setting2ViewController.m in Sources */,
-				4168F3D22264796F00E059ED /* TagItemTableViewCell.m in Sources */,
-				4168F3CC2260316600E059ED /* Setting1ViewController.m in Sources */,
-				4168F3C62260312C00E059ED /* InventoryViewController.m in Sources */,
-				0444983624F1F54A00DADF77 /* NewDevConnStatusViewController.m in Sources */,
+				33AAFCD62A0CEE9400DC0721 /* DevDetailTabBarViewController.m in Sources */,
+				33AAFCED2A0CEEAD00DC0721 /* NewDevConnStatusViewController.m in Sources */,
+				33AAFCD82A0CEE9400DC0721 /* ScanDebugLogItemTableViewCell.m in Sources */,
 				41A5CC122252096D00FF5953 /* AppDelegate.m in Sources */,
-				4179C92A23852C29009D9CE9 /* ScanDebugLogItemTableViewCell.m in Sources */,
+				33AAFCF02A0CEEAD00DC0721 /* NewSettingViewController.m in Sources */,
 				41A5CC232252096F00FF5953 /* main.m in Sources */,
-				0444982A24F11A4E00DADF77 /* NewSettingViewController.m in Sources */,
-				412AEFC4225DDABF001C220D /* DevDetailTabBarViewController.m in Sources */,
-				0444983024F1676D00DADF77 /* NewReadWriteTagViewController.m in Sources */,
-				4168F3C92260314C00E059ED /* ReadWriteTagViewController.m in Sources */,
 				4155504D22533321009CD9FD /* BaseDevItemTableViewCell.m in Sources */,
-				4168F3D522684D6F00E059ED /* DevConnStatusViewController.m in Sources */,
+				33AAFCF32A0CEEAD00DC0721 /* ReadWriteTagViewController.m in Sources */,
 				4162742B2314D46400DDFBAE /* ScanDevV2ViewController.m in Sources */,
-				0444982D24F15D7E00DADF77 /* NewInventoryViewController.m in Sources */,
-				4179C92723852B57009D9CE9 /* ScanDebugLogTableViewController.m in Sources */,
-				0444983324F167CB00DADF77 /* NewAdvancedViewController.m in Sources */,
+				33AAFCEC2A0CEEAD00DC0721 /* NewReadWriteTagViewController.m in Sources */,
+				33AAFCD72A0CEE9400DC0721 /* ScanDebugLogTableViewController.m in Sources */,
+				33AAFCEE2A0CEEAD00DC0721 /* InventoryViewController.m in Sources */,
+				33AAFCEF2A0CEEAD00DC0721 /* DevConnStatusViewController.m in Sources */,
+				33AAFCF22A0CEEAD00DC0721 /* NewInventoryViewController.m in Sources */,
+				33AAFCF12A0CEEAD00DC0721 /* NewAdvancedViewController.m in Sources */,
+				33AAFCF42A0CEEAD00DC0721 /* TagItemTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -568,7 +550,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 0;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = SJGX2HQEE9;
 				ENABLE_BITCODE = NO;
@@ -584,7 +566,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 3.1.5;
+				MARKETING_VERSION = 3.1.7;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.wade.gigatms.uhfsample;
@@ -609,7 +591,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 0;
 				DEVELOPMENT_TEAM = SJGX2HQEE9;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -624,7 +606,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 3.1.5;
+				MARKETING_VERSION = 3.1.7;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.wade.gigatms.uhfsample;
 				PRODUCT_NAME = "$(TARGET_NAME)";

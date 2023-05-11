@@ -158,6 +158,10 @@
         TS100 *ts100 = (TS100 *) self->passDev;
         
         [ts100 getBleRomVersion];
+    } else if ([self->passDev isMemberOfClass:[TS100A class]]) {
+        TS100A *ts100a = (TS100A *) self->passDev;
+        
+        [ts100a getBleRomVersion];
     } else if ([self->passDev isMemberOfClass:[TS800 class]]) {
         TS800 *ts800 = (TS800 *) self->passDev;
         

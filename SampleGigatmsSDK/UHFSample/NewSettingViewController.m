@@ -10,6 +10,7 @@
 #import "TagItemTableViewCell.h"
 #import <UHFSDK/GNPTagInfo.h>
 #import <UHFSDK/TS100.h>
+#import <UHFSDK/TS100A.h>
 #import <UHFSDK/TS800.h>
 #import <UHFSDK/UR0250.h>
 #import "DevDetailTabBarViewController.h"
@@ -694,6 +695,10 @@
                 TS100 *ts100 = (TS100 *) self->passDev;
                 
                 [ts100 getTagPresentedRepeatInterval:false];
+            } else if ([self->passDev isMemberOfClass:[TS100A class]]) {
+                TS100A *ts100a = (TS100A *) self->passDev;
+                
+                [ts100a getTagPresentedRepeatInterval:false];
             } else if ([self->passDev isMemberOfClass:[TS800 class]]) {
                 TS800 *ts800 = (TS800 *) self->passDev;
                 
@@ -716,6 +721,10 @@
                 TS100 *ts100 = (TS100 *) self->passDev;
                 
                 [ts100 setTagPresentedRepeatInterval:false Time:round(100 * [self->_sliderTagPresentedRepeatInterval value]) / 100];
+            } else if ([self->passDev isMemberOfClass:[TS100A class]]) {
+                TS100A *ts100a = (TS100A *) self->passDev;
+                
+                [ts100a setTagPresentedRepeatInterval:false Time:round(100 * [self->_sliderTagPresentedRepeatInterval value]) / 100];
             } else if ([self->passDev isMemberOfClass:[TS800 class]]) {
                 TS800 *ts800 = (TS800 *) self->passDev;
                 
@@ -815,7 +824,7 @@
 }
 
 -(void)didGetRfSensitivity:(RfSensitivityLevel)rfSensitivity{
-    [childViewController addLog:[NSString stringWithFormat:@"didGetRfSensitivity = %d",rfSensitivity]];
+    //[childViewController addLog:[NSString stringWithFormat:@"didGetRfSensitivity = %d",rfSensitivity]];
     int value = 1;
     switch (rfSensitivity) {
         case LEVEL_1_LOWEST: {
@@ -891,140 +900,172 @@
         default:
             break;
     }
+    [childViewController addLog:[NSString stringWithFormat:@"didGetRfSensitivity = %d",value]];
     self->_labRFSensitivity.text = [NSString stringWithFormat:@"%d",value];
     self->_sliderRFSensitivity.value = value;
 }
 
 -(void)didGetRxDecode:(int)rxDecode{
-    [childViewController addLog:[NSString stringWithFormat:@"didGetRxDecode = %d",rxDecode]];
+    //[childViewController addLog:[NSString stringWithFormat:@"didGetRxDecode = %d",rxDecode]];
+    NSString* rxDecodeString = @"";
     switch (rxDecode) {
         case FM0: {
             [self.pickerRxDecode selectRow:0 inComponent:0 animated:true];
+            rxDecodeString = @"FM0";
         }
             break;
             
         case MILLER_2: {
             [self.pickerRxDecode selectRow:1 inComponent:0 animated:true];
+            rxDecodeString = @"MILLER_2";
         }
             break;
             
         case MILLER_4: {
             [self.pickerRxDecode selectRow:2 inComponent:0 animated:true];
+            rxDecodeString = @"MILLER_4";
         }
             break;
             
         case MILLER_8: {
             [self.pickerRxDecode selectRow:3 inComponent:0 animated:true];
+            rxDecodeString = @"MILLER_8";
         }
             break;
 
         default:{
             [self.pickerRxDecode selectRow:0 inComponent:0 animated:true];
+            rxDecodeString = @"FM0";
         }
             break;
     }
+    [childViewController addLog:[NSString stringWithFormat:@"didGetRxDecode = %@",rxDecodeString]];
 }
 
 -(void)didGetSessionAnd:(Session)session Target:(Target) target{
-    [childViewController addLog:[NSString stringWithFormat:@"didGetSessionAnd, session = %d, target = %d", session, target]];
+    //[childViewController addLog:[NSString stringWithFormat:@"didGetSessionAnd, session = %d, target = %d", session, target]];
+    NSString* sessionString = @"";
     switch (session) {
         case S0: {
             [self.pickerSession selectRow:0 inComponent:0 animated:true];
+            sessionString = @"S0";
         }
             break;
             
         case S1: {
             [self.pickerSession selectRow:1 inComponent:0 animated:true];
+            sessionString = @"S1";
         }
             break;
             
         case S2: {
             [self.pickerSession selectRow:2 inComponent:0 animated:true];
+            sessionString = @"S2";
         }
             break;
             
         case S3: {
             [self.pickerSession selectRow:3 inComponent:0 animated:true];
+            sessionString = @"S3";
         }
             break;
         
         case Session_SL: {
             [self.pickerSession selectRow:4 inComponent:0 animated:true];
+            sessionString = @"SL";
         }
             break;
 
         default: {
                [self.pickerSession selectRow:0 inComponent:0 animated:true];
+            sessionString = @"S0";
            }
             break;
     }
     
+    NSString* targetString = @"";
     switch (target) {
         case 0: {
             [self.pickerTarget selectRow:0 inComponent:0 animated:true];
+            targetString = @"A";
         }
             break;
         
         case 1: {
             [self.pickerTarget selectRow:1 inComponent:0 animated:true];
+            targetString = @"B";
         }
             break;
             
         case 2: {
             [self.pickerTarget selectRow:2 inComponent:0 animated:true];
+            targetString = @"A_B";
         }
             break;
 
         default: {
            [self.pickerTarget selectRow:0 inComponent:0 animated:true];
+            targetString = @"A";
        }
             break;
     }
+    
+    [childViewController addLog:[NSString stringWithFormat:@"didGetSessionAnd, session = %@, target = %@", sessionString, targetString]];
 }
 
 -(void)didGetLinkFrequency:(int)linkFrequency{
-    [childViewController addLog:[NSString stringWithFormat:@"didGetLinkFrequency = %d", linkFrequency]];
+    //[childViewController addLog:[NSString stringWithFormat:@"didGetLinkFrequency = %d", linkFrequency]];
+    NSString* linkFrequencyString = @"";
     switch (linkFrequency) {
         case LF_40KHZ: {
             [self.pickerLinkFrequency selectRow:0 inComponent:0 animated:true];
+            linkFrequencyString = @"LF_40KHZ";
         }
             break;
             
         case LF_80KHZ: {
             [self.pickerLinkFrequency selectRow:1 inComponent:0 animated:true];
+            linkFrequencyString = @"LF_80KHZ";
         }
             break;
             
         case LF_160KHZ: {
             [self.pickerLinkFrequency selectRow:2 inComponent:0 animated:true];
+            linkFrequencyString = @"LF_160KHZ";
         }
             break;
             
         case LF_213_POINT_3KHZ: {
             [self.pickerLinkFrequency selectRow:3 inComponent:0 animated:true];
+            linkFrequencyString = @"LF_213_POINT_3KHZ";
         }
             break;
         
         case LF_256KHZ: {
             [self.pickerLinkFrequency selectRow:4 inComponent:0 animated:true];
+            linkFrequencyString = @"LF_256KHZ";
         }
             break;
         
         case LF_320KHZ: {
             [self.pickerLinkFrequency selectRow:5 inComponent:0 animated:true];
+            linkFrequencyString = @"LF_320KHZ";
         }
             break;
         
         case LF_640KHZ: {
             [self.pickerLinkFrequency selectRow:6 inComponent:0 animated:true];
+            linkFrequencyString = @"LF_640KHZ";
         }
             break;
 
         default: {
             [self.pickerLinkFrequency selectRow:0 inComponent:0 animated:true];
+            linkFrequencyString = @"LF_40KHZ";
         }
             break;
     }
+    [childViewController addLog:[NSString stringWithFormat:@"didGetLinkFrequency = %@", linkFrequencyString]];
 }
 
 -(void)didGetQValue:(Byte) qValue{

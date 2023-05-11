@@ -267,6 +267,7 @@ typedef struct _GNetPlusResult
 -(NSData*)hcmdGetCommandTriggerState;
 -(NSData*)hcmdSetCommandTriggerState:(NSDictionary *) states;
 -(NSData*)hcmdExtra:(int)extraCode CommandType:(int) commandType Command:(int) command;
+-(NSData*)hcmdExtra:(int)extraCode CommandType:(int) commandType Command:(int) command Parameter:(NSData*) parameter;
 -(NSData*)hcmdDirectIO:(int) command Data:(NSData *) data;
 
 -(NSData*)hcmdWriteSettingForInventoryActiveMode:(BOOL)isTemp Address:(char)iAddr Value:(NSData*)val;

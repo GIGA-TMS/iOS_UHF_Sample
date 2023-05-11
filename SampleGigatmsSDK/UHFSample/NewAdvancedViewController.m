@@ -10,6 +10,7 @@
 #import "TagItemTableViewCell.h"
 #import <UHFSDK/GNPTagInfo.h>
 #import <UHFSDK/TS100.h>
+#import <UHFSDK/TS100A.h>
 #import <UHFSDK/TS800.h>
 #import <UHFSDK/UR0250.h>
 #import <UHFSDK/BaseTagEvent.h>
@@ -124,6 +125,8 @@
     outputInterfaceTypes = @[@"AUTO", @"NOT_AUTO"];
     keyboardTypes = @[@"DISABLE", @"HID_KEYBOARD", @"BLE_KEYBOARD"];
     if ([self->passDev isMemberOfClass:[TS100 class]]) {
+        eventType = @[@"TAG_PRESENTED_EVENT", @"TAG_PRESENTED_EVENT_EX"];
+    } else if ([self->passDev isMemberOfClass:[TS100A class]]) {
         eventType = @[@"TAG_PRESENTED_EVENT", @"TAG_PRESENTED_EVENT_EX"];
     } else if ([self->passDev isMemberOfClass:[TS800 class]]) {
         eventType = @[@"TAG_PRESENTED_EVENT"];
@@ -505,6 +508,10 @@
                 TS100 *ts100 = (TS100 *) self->passDev;
                 
                 [ts100 getBleDeviceName];
+            } else if ([self->passDev isMemberOfClass:[TS100A class]]) {
+                TS100A *ts100a = (TS100A *) self->passDev;
+                
+                [ts100a getBleDeviceName];
             } else if ([self->passDev isMemberOfClass:[TS800 class]]) {
                 TS800 *ts800 = (TS800 *) self->passDev;
                 
@@ -529,6 +536,10 @@
                 TS100 *ts100 = (TS100 *) self->passDev;
                 
                 [ts100 setBleDeviceName:deviceName];
+            } else if ([self->passDev isMemberOfClass:[TS100A class]]) {
+                TS100A *ts100a = (TS100A *) self->passDev;
+                
+                [ts100a setBleDeviceName:deviceName];
             } else if ([self->passDev isMemberOfClass:[TS800 class]]) {
                 TS800 *ts800 = (TS800 *) self->passDev;
                 
@@ -551,6 +562,10 @@
                 TS100 *ts100 = (TS100 *) self->passDev;
                 
                 [ts100 getBuzzerOperationMode:false];
+            } else if ([self->passDev isMemberOfClass:[TS100A class]]) {
+                TS100A *ts100a = (TS100A *) self->passDev;
+                
+                [ts100a getBuzzerOperationMode:false];
             } else if ([self->passDev isMemberOfClass:[TS800 class]]) {
                 TS800 *ts800 = (TS800 *) self->passDev;
                 
@@ -592,6 +607,10 @@
                 TS100 *ts100 = (TS100 *) self->passDev;
                 
                 [ts100 setBuzzerOperationMode:false BuzzerOperationMode:buzzerOperationMode];
+            } else if ([self->passDev isMemberOfClass:[TS100A class]]) {
+                TS100A *ts100a = (TS100A *) self->passDev;
+                
+                [ts100a setBuzzerOperationMode:false BuzzerOperationMode:buzzerOperationMode];
             } else if ([self->passDev isMemberOfClass:[TS800 class]]) {
                 TS800 *ts800 = (TS800 *) self->passDev;
                 
@@ -638,6 +657,10 @@
                 TS100 *ts100 = (TS100 *) self->passDev;
                 
                 [ts100 controlBuzzer:buzzerAction];
+            } else if ([self->passDev isMemberOfClass:[TS100A class]]) {
+                TS100A *ts100a = (TS100A *) self->passDev;
+                
+                [ts100a controlBuzzer:buzzerAction];
             } else if ([self->passDev isMemberOfClass:[TS800 class]]) {
                 TS800 *ts800 = (TS800 *) self->passDev;
                 
@@ -656,6 +679,10 @@
                 TS100 *ts100 = (TS100 *) self->passDev;
                 
                 [ts100 getOutputInterfaces:false];
+            } else if ([self->passDev isMemberOfClass:[TS100A class]]) {
+                TS100A *ts100a = (TS100A *) self->passDev;
+                
+                [ts100a getOutputInterfaces:false];
             }
         }
     }
@@ -717,6 +744,10 @@
                 TS100 *ts100 = (TS100 *) self->passDev;
                 
                 [ts100 setOutputInterfaces:false KeyboardSimulation:keyboardSimulation OutputInterface:outputInterfaces];
+            } else if ([self->passDev isMemberOfClass:[TS100A class]]) {
+                TS100A *ts100a = (TS100A *) self->passDev;
+                
+                [ts100a setOutputInterfaces:false KeyboardSimulation:keyboardSimulation OutputInterface:outputInterfaces];
             }
         }
     }
@@ -731,6 +762,10 @@
                 TS100 *ts100 = (TS100 *) self->passDev;
                 
                 [ts100 getEventType:false];
+            } else if ([self->passDev isMemberOfClass:[TS100A class]]) {
+                TS100A *ts100a = (TS100A *) self->passDev;
+                
+                [ts100a getEventType:false];
             } else if ([self->passDev isMemberOfClass:[TS800 class]]) {
                 TS800 *ts800 = (TS800 *) self->passDev;
                 
@@ -776,6 +811,10 @@
                 TS100 *ts100 = (TS100 *) self->passDev;
                 
                 [ts100 setEventType:false EventType:baseTagEvent];
+            } else if ([self->passDev isMemberOfClass:[TS100A class]]) {
+                TS100A *ts100a = (TS100A *) self->passDev;
+                
+                [ts100a setEventType:false EventType:baseTagEvent];
             } else if ([self->passDev isMemberOfClass:[TS800 class]]) {
                 TS800 *ts800 = (TS800 *) self->passDev;
                 
@@ -798,6 +837,10 @@
                 TS100 *ts100 = (TS100 *) self->passDev;
                 
                 [ts100 getFilter:false];
+            } else if ([self->passDev isMemberOfClass:[TS100A class]]) {
+                TS100A *ts100a = (TS100A *) self->passDev;
+                
+                [ts100a getFilter:false];
             }
         }
     }
@@ -840,6 +883,10 @@
                 TS100 *ts100 = (TS100 *) self->passDev;
                 
                 [ts100 setFilter:false TagDataEncodeType:tagDataEncodeTypes];
+            } else if ([self->passDev isMemberOfClass:[TS100A class]]) {
+                TS100A *ts100a = (TS100A *) self->passDev;
+                
+                [ts100a setFilter:false TagDataEncodeType:tagDataEncodeTypes];
             }
         }
     }
@@ -854,6 +901,10 @@
                 TS100 *ts100 = (TS100 *) self->passDev;
                 
                 [ts100 getPostDataDelimiter:false];
+            } else if ([self->passDev isMemberOfClass:[TS100A class]]) {
+                TS100A *ts100a = (TS100A *) self->passDev;
+                
+                [ts100a getPostDataDelimiter:false];
             }
         }
     }
@@ -886,6 +937,10 @@
                 TS100 *ts100 = (TS100 *) self->passDev;
                 
                 [ts100 setPostDataDelimiter:false PostDataDelimiter:postDataDelimiter];
+            } else if ([self->passDev isMemberOfClass:[TS100A class]]) {
+                TS100A *ts100a = (TS100A *) self->passDev;
+                
+                [ts100a setPostDataDelimiter:false PostDataDelimiter:postDataDelimiter];
             }
         }
     }
@@ -900,6 +955,10 @@
                 TS100 *ts100 = (TS100 *) self->passDev;
                 
                 [ts100 getTagMemorySelection:false];
+            } else if ([self->passDev isMemberOfClass:[TS100A class]]) {
+                TS100A *ts100a = (TS100A *) self->passDev;
+                
+                [ts100a getTagMemorySelection:false];
             }
         }
     }
@@ -942,6 +1001,10 @@
                 TS100 *ts100 = (TS100 *) self->passDev;
                 
                 [ts100 setTagMemorySelection:false TagMemory:tagMemorySelection];
+            } else if ([self->passDev isMemberOfClass:[TS100A class]]) {
+                TS100A *ts100a = (TS100A *) self->passDev;
+                
+                [ts100a setTagMemorySelection:false TagMemory:tagMemorySelection];
             }
         }
     }
@@ -956,6 +1019,10 @@
                 TS100 *ts100 = (TS100 *) self->passDev;
                 
                 [ts100 getRemoteHost];
+            } else if ([self->passDev isMemberOfClass:[TS100A class]]) {
+                TS100A *ts100a = (TS100A *) self->passDev;
+                
+                [ts100a getRemoteHost];
             } else if ([self->passDev isMemberOfClass:[TS800 class]]) {
                 TS800 *ts800 = (TS800 *) self->passDev;
                 
@@ -984,6 +1051,10 @@
                 TS100 *ts100 = (TS100 *) self->passDev;
                 
                 [ts100 setRemoteHost:connectionTimeout InetSocketAddress:inetSocketAddress];
+            } else if ([self->passDev isMemberOfClass:[TS100A class]]) {
+                TS100A *ts100a = (TS100A *) self->passDev;
+                
+                [ts100a setRemoteHost:connectionTimeout InetSocketAddress:inetSocketAddress];
             } else if ([self->passDev isMemberOfClass:[TS800 class]]) {
                 TS800 *ts800 = (TS800 *) self->passDev;
                 
@@ -1016,6 +1087,10 @@
                 TS100 *ts100 = (TS100 *) self->passDev;
                 
                 [ts100 setWifiSettings:ssid PWD:password];
+            } else if ([self->passDev isMemberOfClass:[TS100A class]]) {
+                TS100A *ts100a = (TS100A *) self->passDev;
+                
+                [ts100a setWifiSettings:ssid PWD:password];
             } else if ([self->passDev isMemberOfClass:[TS800 class]]) {
                 TS800 *ts800 = (TS800 *) self->passDev;
                 
@@ -1044,6 +1119,10 @@
                 TS100 *ts100 = (TS100 *) self->passDev;
                 
                 [ts100 setWifiSettings:ssid PWD:password IP:ip Gateway:gateway SubNetMask:subnetMask];
+            } else if ([self->passDev isMemberOfClass:[TS100A class]]) {
+                TS100A *ts100a = (TS100A *) self->passDev;
+                
+                [ts100a setWifiSettings:ssid PWD:password IP:ip Gateway:gateway SubNetMask:subnetMask];
             } else if ([self->passDev isMemberOfClass:[TS800 class]]) {
                 TS800 *ts800 = (TS800 *) self->passDev;
                 
@@ -1066,6 +1145,10 @@
                 TS100 *ts100 = (TS100 *) self->passDev;
                 
                 [ts100 getWiFiMacAddress];
+            } else if ([self->passDev isMemberOfClass:[TS100A class]]) {
+                TS100A *ts100a = (TS100A *) self->passDev;
+                
+                [ts100a getWiFiMacAddress];
             } else if ([self->passDev isMemberOfClass:[TS800 class]]) {
                 TS800 *ts800 = (TS800 *) self->passDev;
                 
@@ -1088,6 +1171,10 @@
                 TS100 *ts100 = (TS100 *) self->passDev;
                 
                 [ts100 getBarcodeReadFormat:false];
+            } else if ([self->passDev isMemberOfClass:[TS100A class]]) {
+                TS100A *ts100a = (TS100A *) self->passDev;
+                
+                [ts100a getBarcodeReadFormat:false];
             }
         }
     }
@@ -1130,6 +1217,10 @@
                 TS100 *ts100 = (TS100 *) self->passDev;
                 
                 [ts100 setBarcodeReadFormat:false BarcodeFormat:barcodeFormat];
+            } else if ([self->passDev isMemberOfClass:[TS100A class]]) {
+                TS100A *ts100a = (TS100A *) self->passDev;
+                
+                [ts100a setBarcodeReadFormat:false BarcodeFormat:barcodeFormat];
             }
         }
     }
@@ -1144,6 +1235,10 @@
                 TS100 *ts100 = (TS100 *) self->passDev;
                 
                 [ts100 getFieldSeparator:false];
+            } else if ([self->passDev isMemberOfClass:[TS100A class]]) {
+                TS100A *ts100a = (TS100A *) self->passDev;
+                
+                [ts100a getFieldSeparator:false];
             }
         }
     }
@@ -1172,6 +1267,10 @@
                 TS100 *ts100 = (TS100 *) self->passDev;
 
                 [ts100 setFieldSeparator:false FieldSeparator:separator];
+            } else if ([self->passDev isMemberOfClass:[TS100A class]]) {
+                TS100A *ts100a = (TS100A *) self->passDev;
+
+                [ts100a setFieldSeparator:false FieldSeparator:separator];
             }
         }
     }
@@ -1186,6 +1285,10 @@
                 TS100 *ts100 = (TS100 *) self->passDev;
                 
                 [ts100 getPrefix:false];
+            } else if ([self->passDev isMemberOfClass:[TS100A class]]) {
+                TS100A *ts100a = (TS100A *) self->passDev;
+                
+                [ts100a getPrefix:false];
             }
         }
     }
@@ -1207,6 +1310,10 @@
                 TS100 *ts100 = (TS100 *) self->passDev;
 
                 [ts100 setPrefix:false Prefix:prefixes];
+            } else if ([self->passDev isMemberOfClass:[TS100A class]]) {
+                TS100A *ts100a = (TS100A *) self->passDev;
+
+                [ts100a setPrefix:false Prefix:prefixes];
             }
         }
     }
@@ -1221,6 +1328,10 @@
                 TS100 *ts100 = (TS100 *) self->passDev;
                 
                 [ts100 getSuffix:false];
+            } else if ([self->passDev isMemberOfClass:[TS100A class]]) {
+                TS100A *ts100a = (TS100A *) self->passDev;
+                
+                [ts100a getSuffix:false];
             }
         }
     }
@@ -1242,6 +1353,10 @@
                 TS100 *ts100 = (TS100 *) self->passDev;
 
                 [ts100 setSuffix:false Suffix:suffixes];
+            } else if ([self->passDev isMemberOfClass:[TS100A class]]) {
+                TS100A *ts100a = (TS100A *) self->passDev;
+
+                [ts100a setSuffix:false Suffix:suffixes];
             }
         }
     }
@@ -1256,6 +1371,10 @@
                 TS100 *ts100 = (TS100 *) self->passDev;
                 
                 [ts100 getDeactivateEpcPrefix:false];
+            } else if ([self->passDev isMemberOfClass:[TS100A class]]) {
+                TS100A *ts100a = (TS100A *) self->passDev;
+                
+                [ts100a getDeactivateEpcPrefix:false];
             }
         }
     }
@@ -1271,6 +1390,10 @@
                 TS100 *ts100 = (TS100 *) self->passDev;
                 
                 [ts100 setDeactivateEpcPrefix:false Prefix:prefixes];
+            } else if ([self->passDev isMemberOfClass:[TS100A class]]) {
+                TS100A *ts100a = (TS100A *) self->passDev;
+                
+                [ts100a setDeactivateEpcPrefix:false Prefix:prefixes];
             }
         }
     }
@@ -1285,6 +1408,10 @@
                 TS100 *ts100 = (TS100 *) self->passDev;
                 
                 [ts100 getReactivateEpcPrefix:false];
+            } else if ([self->passDev isMemberOfClass:[TS100A class]]) {
+                TS100A *ts100a = (TS100A *) self->passDev;
+                
+                [ts100a getReactivateEpcPrefix:false];
             }
         }
     }
@@ -1300,6 +1427,10 @@
                 TS100 *ts100 = (TS100 *) self->passDev;
                 
                 [ts100 setReactivateEpcPrefix:false Prefix:prefixes];
+            } else if ([self->passDev isMemberOfClass:[TS100A class]]) {
+                TS100A *ts100a = (TS100A *) self->passDev;
+                
+                [ts100a setReactivateEpcPrefix:false Prefix:prefixes];
             }
         }
     }
@@ -1314,6 +1445,10 @@
                 TS100 *ts100 = (TS100 *) self->passDev;
                 
                 [ts100 getTagProtection:false];
+            } else if ([self->passDev isMemberOfClass:[TS100A class]]) {
+                TS100A *ts100a = (TS100A *) self->passDev;
+                
+                [ts100a getTagProtection:false];
             }
         }
     }
@@ -1352,6 +1487,11 @@
                 
                 [ts100 setTagProtection:false TagProtection:tagProtection];
 
+            } else if ([self->passDev isMemberOfClass:[TS100A class]]) {
+                TS100A *ts100a = (TS100A *) self->passDev;
+                
+                [ts100a setTagProtection:false TagProtection:tagProtection];
+
             }
         }
     }
@@ -1366,6 +1506,10 @@
                 TS100 *ts100 = (TS100 *) self->passDev;
                 
                 [ts100 getTagProtectionAccessPassword];
+            } else if ([self->passDev isMemberOfClass:[TS100A class]]) {
+                TS100A *ts100a = (TS100A *) self->passDev;
+                
+                [ts100a getTagProtectionAccessPassword];
             }
         }
     }
@@ -1381,6 +1525,10 @@
                 TS100 *ts100 = (TS100 *) self->passDev;
                 
                 [ts100 setTagProtectionAccessPassword:accessPassword];
+            } else if ([self->passDev isMemberOfClass:[TS100A class]]) {
+                TS100A *ts100a = (TS100A *) self->passDev;
+                
+                [ts100a setTagProtectionAccessPassword:accessPassword];
             }
         }
     }
@@ -1395,6 +1543,10 @@
                 TS100 *ts100 = (TS100 *) self->passDev;
                 
                 [ts100 getUsbInterface:false];
+            } else if ([self->passDev isMemberOfClass:[TS100A class]]) {
+                TS100A *ts100a = (TS100A *) self->passDev;
+                
+                [ts100a getUsbInterface:false];
             }
         }
     }
@@ -1427,6 +1579,10 @@
                 TS100 *ts100 = (TS100 *) self->passDev;
                 
                 [ts100 setUsbInterface:false UsbInterface:usbInterface];
+            } else if ([self->passDev isMemberOfClass:[TS100A class]]) {
+                TS100A *ts100a = (TS100A *) self->passDev;
+                
+                [ts100a setUsbInterface:false UsbInterface:usbInterface];
             }
         }
     }
@@ -1441,6 +1597,10 @@
                 TS100 *ts100 = (TS100 *) self->passDev;
                 
                 [ts100 getOutputFormat:false];
+            } else if ([self->passDev isMemberOfClass:[TS100A class]]) {
+                TS100A *ts100a = (TS100A *) self->passDev;
+                
+                [ts100a getOutputFormat:false];
             }
         }
     }
@@ -1473,6 +1633,10 @@
                 TS100 *ts100 = (TS100 *) self->passDev;
                 
                 [ts100 setOutputFormat:false OutputFormat:outputFormat];
+            } else if ([self->passDev isMemberOfClass:[TS100A class]]) {
+                TS100A *ts100a = (TS100A *) self->passDev;
+                
+                [ts100a setOutputFormat:false OutputFormat:outputFormat];
             }
         }
     }
@@ -1486,63 +1650,90 @@
 }
 
 -(void)didGetBuzzerOperationMode:(BuzzerOperationMode) bom {
-    [childViewController addLog:[NSString stringWithFormat:@"didGetBuzzerOperationMode, bom = %d",bom]];
-    
+    //[childViewController addLog:[NSString stringWithFormat:@"didGetBuzzerOperationMode, bom = %d",bom]];
+    NSString* bomString = @"";
     switch (bom) {
         case BOM_Off: {
             [self.pickerBuzzerAdapterOperation selectRow:0 inComponent:0 animated:true];
+            bomString = @"OFF";
         }
             break;
             
         case BOM_Once: {
             [self.pickerBuzzerAdapterOperation selectRow:1 inComponent:0 animated:true];
+            bomString = @"ONCE";
         }
             break;
             
         case BOM_Repeat: {
             [self.pickerBuzzerAdapterOperation selectRow:2 inComponent:0 animated:true];
+            bomString = @"REPEAT";
         }
             break;
 
         default:
             break;
     }
+    [childViewController addLog:[NSString stringWithFormat:@"didGetBuzzerOperationMode, bom = %@",bomString]];
 }
 
 -(void)didGetOutputInterfaces:(int) settingValue {
-    [childViewController addLog:[NSString stringWithFormat:@"didGetOutputInterfaces, settingValue = %d",settingValue]];
-    
+    //[childViewController addLog:[NSString stringWithFormat:@"didGetOutputInterfaces, settingValue = %d",settingValue]];
+    NSString* settingValueString = @"";
+    NSString* keyboardSimulationString = @"";
+    NSString* outputInterfaceString = @"";
     if ((settingValue & 0xFF) == 0xFF) {
         [self.pickerOutputInterfaceTypes selectRow:0 inComponent:0 animated:true];
         [self pickerView:self.pickerOutputInterfaceTypes didSelectRow:0 inComponent:0];
+        settingValueString = @"AUTO";
+        [childViewController addLog:[NSString stringWithFormat:@"didGetOutputInterfaces: %@", settingValueString]];
     } else {
         [self.pickerOutputInterfaceTypes selectRow:1 inComponent:0 animated:true];
         [self pickerView:self.pickerOutputInterfaceTypes didSelectRow:1 inComponent:0];
+        settingValueString = @"NOT AUTO";
+        
         KeyboardSimulation keyboardSimulation = settingValue & 0x07;
         OutputInterface outputInterfaces = settingValue & 0xF8;
-
         if ((keyboardSimulation & 0x06) == 0x06) {
             [self.pickerKeyboardTypes selectRow:0 inComponent:0 animated:true];
+            keyboardSimulationString = @"DISABLE";
         } else if ((keyboardSimulation & KS_HID_KEYBOARD) == KS_HID_KEYBOARD) {
             [self.pickerKeyboardTypes selectRow:1 inComponent:0 animated:true];
+            keyboardSimulationString = @"HID_KEYBOARD";
         } else if ((keyboardSimulation & KS_BLE_KEYBOARD) == KS_BLE_KEYBOARD) {
             [self.pickerKeyboardTypes selectRow:2 inComponent:0 animated:true];
+            keyboardSimulationString = @"BLE_KEYBOARD";
         }
 
         [self.switchHID_N_VCOM setOn:(outputInterfaces & OI_HID_N_VCOM) == OI_HID_N_VCOM];
         [self.switchBLE setOn:(outputInterfaces & OI_BLE) == OI_BLE];
         [self.switchTCP_CLIENT setOn:(outputInterfaces & OI_TCP_CLIENT) == OI_TCP_CLIENT];
         [self.switchTCP_SERVER setOn:(outputInterfaces & OI_TCP_SERVER) == OI_TCP_SERVER];
+        
+        if (((outputInterfaces & OI_TCP_CLIENT) == OI_TCP_CLIENT) == true) {
+            outputInterfaceString = [outputInterfaceString stringByAppendingFormat:@"[TCP_CLIENT]"];
+        }
+        if (((outputInterfaces & OI_HID_N_VCOM) == OI_HID_N_VCOM) == true) {
+            outputInterfaceString = [outputInterfaceString stringByAppendingFormat:@"[HID_N_VCOM]"];
+        }
+        if (((outputInterfaces & OI_BLE) == OI_BLE) == true) {
+            outputInterfaceString = [outputInterfaceString stringByAppendingFormat:@"[BLE]"];
+        }
+        if (((outputInterfaces & OI_TCP_SERVER) == OI_TCP_SERVER) == true) {
+            outputInterfaceString = [outputInterfaceString stringByAppendingFormat:@"[TCP_SERVER]"];
+        }
+        [childViewController addLog:[NSString stringWithFormat:@"didGetOutputInterfaces: %@,\n KeyboardSimulation = %@\n OutputInterface = %@", settingValueString, keyboardSimulationString, outputInterfaceString]];
     }
 }
 
 -(void)didGetEventType:(EventType) eventType{
-    [childViewController addLog:[NSString stringWithFormat:@"didGetEventType, eventType = %d",eventType]];
-    
+    //[childViewController addLog:[NSString stringWithFormat:@"didGetEventType, eventType = %d",eventType]];
+    NSString* eventTypeString = @"";
     if (eventType == ET_TagPresentedEx) {
         [self.pickerEventType selectRow:1 inComponent:0 animated:true];
         [self.stackREMOVE_EVENT setHidden:true];
         [self.stackTID_BANK setHidden:true];
+        eventTypeString = @"TAG_PRESENTED_EVENT_EX";
     } else {
         [self.pickerEventType selectRow:0 inComponent:0 animated:true];
         [self.stackREMOVE_EVENT setHidden:false];
@@ -1564,91 +1755,110 @@
             [self.switchREMOVE_EVENT setOn:true];
             [self.switchTID_BANK setOn:true];
         }
+        
+        eventTypeString = @"TAG_PRESENTED_EVENT";
     }
+    [childViewController addLog:[NSString stringWithFormat:@"didGetEventType, eventType = %@",eventTypeString]];
 }
 
 - (void)didGetFilter:(TagDataEncodeType)tagDataEncodeTypes{
-    [childViewController addLog:[NSString stringWithFormat:@"didGetFilter, tagDataEncodeTypes = %d",tagDataEncodeTypes]];
-    
+    //[childViewController addLog:[NSString stringWithFormat:@"didGetFilter, tagDataEncodeTypes = %d",tagDataEncodeTypes]];
+    NSString* typesString = @"";
     if ((tagDataEncodeTypes & TDE_UDC) == TDE_UDC) {
         [self.switchUDC setOn:true];
+        typesString = [typesString stringByAppendingFormat:@"[UDC]"];
     } else {
         [self.switchUDC setOn:false];
     }
     
     if ((tagDataEncodeTypes & TDE_SGTIN_96_EAS) == TDE_SGTIN_96_EAS) {
         [self.switchSGTIN_96_EAS setOn:true];
+        typesString = [typesString stringByAppendingFormat:@"[SGTIN_96_EAS]"];
     } else {
         [self.switchSGTIN_96_EAS setOn:false];
     }
     
     if ((tagDataEncodeTypes & TDE_SGTIN_96) == TDE_SGTIN_96) {
         [self.switchSGTIN_96 setOn:true];
+        typesString = [typesString stringByAppendingFormat:@"[SGTIN_96]"];
     } else {
         [self.switchSGTIN_96 setOn:false];
     }
     
     if ((tagDataEncodeTypes & TDE_RAW_DATA) == TDE_RAW_DATA) {
         [self.switchRAW_DATA setOn:true];
+        typesString = [typesString stringByAppendingFormat:@"[RAW_DATA]"];
     } else {
         [self.switchRAW_DATA setOn:false];
     }
     
     if ((tagDataEncodeTypes & TDE_ADI) == TDE_ADI) {
         [self.switchADI setOn:true];
+        typesString = [typesString stringByAppendingFormat:@"[ADI]"];
     } else {
         [self.switchADI setOn:false];
     }
+    [childViewController addLog:[NSString stringWithFormat:@"didGetFilter, tagDataEncodeTypes = %@",typesString]];
 }
 
 -(void)didGetPostDataDelimiter:(PostDataDelimiter)postDataDelimiter MemoryBankSelection:(MemoryBankSelection)memoryBankSelection{
-    [childViewController addLog:[NSString stringWithFormat:@"didGetPostDataDelimiter, postDataDelimiter = %d, memoryBankSelection = %d",postDataDelimiter, memoryBankSelection]];
-    
+    //[childViewController addLog:[NSString stringWithFormat:@"didGetPostDataDelimiter, postDataDelimiter = %d, memoryBankSelection = %d",postDataDelimiter, memoryBankSelection]];
+    NSString* delimeterString = @"";
     if ((postDataDelimiter & PDD_CARRIAGE) == PDD_CARRIAGE) {
         [self.switchCR setOn:true];
+        delimeterString = [delimeterString stringByAppendingFormat:@"[CR]"];
     } else {
         [self.switchCR setOn:false];
     }
     
     if ((postDataDelimiter & PDD_LINE) == PDD_LINE) {
         [self.switchLF setOn:true];
+        delimeterString = [delimeterString stringByAppendingFormat:@"[LF]"];
     } else {
         [self.switchLF setOn:false];
     }
     
     if ((postDataDelimiter & PDD_TAB) == PDD_TAB) {
         [self.switchTAB setOn:true];
+        delimeterString = [delimeterString stringByAppendingFormat:@"[TAB]"];
     } else {
         [self.switchTAB setOn:false];
     }
+    [childViewController addLog:[NSString stringWithFormat:@"didGetPostDataDelimiter, PostDataDelimiter = %@",delimeterString]];
 }
 
 -(void)didGetTagMemorySelection:(TagMemorySelection)tagMemorySelection{
-    [childViewController addLog:[NSString stringWithFormat:@"didGetTagMemorySelection, tagMemorySelection = %d",tagMemorySelection]];
-    
+    //[childViewController addLog:[NSString stringWithFormat:@"didGetTagMemorySelection, tagMemorySelection = %d",tagMemorySelection]];
+    NSString* selectionString = @"";
     if ((tagMemorySelection & TM_PC) == TM_PC) {
         [self.switchPC setOn:true];
+        selectionString = [selectionString stringByAppendingFormat:@"[PC]"];
     } else {
         [self.switchPC setOn:false];
     }
     
     if ((tagMemorySelection & TM_EPC) == TM_EPC) {
         [self.switchEPC setOn:true];
+        selectionString = [selectionString stringByAppendingFormat:@"[EPC]"];
     } else {
         [self.switchEPC setOn:false];
     }
     
     if ((tagMemorySelection & TM_TID) == TM_TID) {
         [self.switchTID setOn:true];
+        selectionString = [selectionString stringByAppendingFormat:@"[TID]"];
     } else {
         [self.switchTID setOn:false];
     }
     
     if ((tagMemorySelection & TM_EPC_ASCII) == TM_EPC_ASCII) {
         [self.switchEPC_ASCII setOn:true];
+        selectionString = [selectionString stringByAppendingFormat:@"[EPC_ASCII]"];
     } else {
         [self.switchEPC_ASCII setOn:false];
     }
+    
+    [childViewController addLog:[NSString stringWithFormat:@"didGetTagMemorySelection, TagMemorySelection = %@",selectionString]];
 }
 
 -(void)didGetRemoteHost:(int)connectTime InetSocketAddress:(InetSocketAddress *)inetSocketAddress {
@@ -1665,32 +1875,37 @@
 }
 
 -(void)didGetBarcodeReadFormat:(BarcodeFormat) barcodeFormat{
-    [childViewController addLog:[NSString stringWithFormat:@"didGetBarcodeReadFormat, barcodeFormat = %d",barcodeFormat]];
-    
+    //[childViewController addLog:[NSString stringWithFormat:@"didGetBarcodeReadFormat, barcodeFormat = %d",barcodeFormat]];
+    NSString* barcodeFormatString = @"";
     switch (barcodeFormat) {
         case GTIN_14: {
             [self.pickerBarcodeReadFormat selectRow:0 inComponent:0 animated:true];
+            barcodeFormatString = @"GTIN_14";
         }
             break;
             
         case GTIN_13: {
             [self.pickerBarcodeReadFormat selectRow:1 inComponent:0 animated:true];
+            barcodeFormatString = @"GTIN_13";
         }
             break;
             
         case GTIN_12: {
             [self.pickerBarcodeReadFormat selectRow:2 inComponent:0 animated:true];
+            barcodeFormatString = @"GTIN_12";
         }
             break;
                 
         case GTIN_8: {
             [self.pickerBarcodeReadFormat selectRow:3 inComponent:0 animated:true];
+            barcodeFormatString = @"GTIN_8";
         }
             break;
 
         default:
             break;
     }
+    [childViewController addLog:[NSString stringWithFormat:@"didGetBarcodeReadFormat, barcodeFormat = %@",barcodeFormatString]];
 }
 
 -(void)didGetFieldSeparator:(Byte) separator {
@@ -1727,27 +1942,31 @@
 }
 
 - (void)didGetTagProtection:(TagProtection)tagProtection {
-    [childViewController addLog:[NSString stringWithFormat:@"didGetTagProtection, tagProtection = %d",tagProtection]];
-    
+    //[childViewController addLog:[NSString stringWithFormat:@"didGetTagProtection, tagProtection = %d",tagProtection]];
+    NSString* tagProtectionString = @"";
     switch (tagProtection) {
         case TP_Specified_Password: {
             [self.pickerTagProtection selectRow:0 inComponent:0 animated:true];
+            tagProtectionString = @"SPECIFIED_PASSWORD";
         }
             break;
             
         case TP_Dynamic_Password: {
             [self.pickerTagProtection selectRow:1 inComponent:0 animated:true];
+            tagProtectionString = @"DYNAMIC_PASSWORD";
         }
             break;
             
         case TP_Disabled: {
             [self.pickerTagProtection selectRow:2 inComponent:0 animated:true];
+            tagProtectionString = @"DISABLE";
         }
             break;
 
         default:
             break;
     }
+    [childViewController addLog:[NSString stringWithFormat:@"didGetTagProtection, tagProtection = %@",tagProtectionString]];
 }
 
 -(void)didGetTagProtectionAccessPassword:(NSString *)accessPassword {
@@ -1757,41 +1976,47 @@
 }
 
 -(void)didGetUsbInterface:(UsbInterface)usbInterface {
-    [childViewController addLog:[NSString stringWithFormat:@"UsbInterface, usbInterface = %d",usbInterface]];
-    
+    //[childViewController addLog:[NSString stringWithFormat:@"UsbInterface, usbInterface = %d",usbInterface]];
+    NSString* usbInterfaceString = @"";
     switch (usbInterface) {
         case UI_VIRTUAL_COMPORT: {
             [self.pickerUsbInterface selectRow:0 inComponent:0 animated:true];
+            usbInterfaceString = @"VIRTUAL_COMPORT";
         }
             break;
             
         case UI_HID: {
             [self.pickerUsbInterface selectRow:1 inComponent:0 animated:true];
+            usbInterfaceString = @"HID";
         }
             break;
             
         default:
             break;
     }
+    [childViewController addLog:[NSString stringWithFormat:@"UsbInterface, usbInterface = %@",usbInterfaceString]];
 }
 
 -(void)didGetOutputFormat:(OutputFormat)outputFormat {
-    [childViewController addLog:[NSString stringWithFormat:@"didGetOutputFormat, outputFormat = %d",outputFormat]];
-    
+    //[childViewController addLog:[NSString stringWithFormat:@"didGetOutputFormat, outputFormat = %d",outputFormat]];
+    NSString* outputFormatString = @"";
     switch (outputFormat) {
         case OF_DISABLED: {
             [self.pickerOutputFormat selectRow:0 inComponent:0 animated:true];
+            outputFormatString = @"DISABLED";
         }
             break;
             
         case OF_AI_BARCODE_SERIAL_NUMBER: {
             [self.pickerOutputFormat selectRow:1 inComponent:0 animated:true];
+            outputFormatString = @"AI_BARCODE_SN";
         }
             break;
             
         default:
             break;
     }
+    [childViewController addLog:[NSString stringWithFormat:@"didGetOutputFormat, outputFormat = %@",outputFormatString]];
 }
 
 -(void)didGetFirmwareVersion:(NSString *)fwVer {
