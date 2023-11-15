@@ -21,6 +21,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [self.tableView setRowHeight:10];
+    
     if (mLogList == nil) {
         mLogList = [[NSMutableArray alloc] init];
     }
@@ -50,7 +52,7 @@
 -(void)updateLog:(NSString*)log{
     [mLogList addObject:log];
     [self.tableView reloadData];
-    self.tableView.contentInset =  UIEdgeInsetsMake(0, -10, 0, 10);
+    //self.tableView.contentInset =  UIEdgeInsetsMake(0, -10, 0, 10);
 }
 
 /*

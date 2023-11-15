@@ -21,6 +21,8 @@
 @interface NewAdvancedViewController () <UIPickerViewDelegate,UIPickerViewDataSource,UITextFieldDelegate,IUHFDeviceListener>
 
 @property (weak, nonatomic) IBOutlet UITextField *textfieldBLEDeviceName;
+@property (weak, nonatomic) IBOutlet UIPickerView *pickerBleServiceMode;
+@property (weak, nonatomic) IBOutlet UIPickerView *pickerBleMode;
 @property (weak, nonatomic) IBOutlet UIPickerView *pickerBuzzerAdapterOperation;
 @property (weak, nonatomic) IBOutlet UIPickerView *pickerControlBuzzerAdapter;
 @property (weak, nonatomic) IBOutlet UIPickerView *pickerOutputInterfaceTypes;
@@ -64,10 +66,16 @@
 @property (weak, nonatomic) IBOutlet UILabel *labTID;
 @property (weak, nonatomic) IBOutlet UISwitch *switchEPC_ASCII;
 @property (weak, nonatomic) IBOutlet UILabel *labEPC_ASCII;
+@property (weak, nonatomic) IBOutlet UITextField *textFieldWiFiHostName;
 @property (weak, nonatomic) IBOutlet UISlider *sliderRemoteHostConnectionTime;
 @property (weak, nonatomic) IBOutlet UILabel *labRemoteHostConnectionTimeout;
 @property (weak, nonatomic) IBOutlet UITextField *textFieldRemoteHostIP;
 @property (weak, nonatomic) IBOutlet UITextField *textFieldRemoteHostPort;
+@property (weak, nonatomic) IBOutlet UIPickerView *pickerViewWiFiTcpClientEnable;
+@property (weak, nonatomic) IBOutlet UISlider *sliderWiFiTcpClientConnectionTime;
+@property (weak, nonatomic) IBOutlet UILabel *labWiFiTcpClientConnectionTimeout;
+@property (weak, nonatomic) IBOutlet UITextField *textFieldWiFiTcpClientIP;
+@property (weak, nonatomic) IBOutlet UITextField *textFieldWiFiTcpClientPort;
 @property (weak, nonatomic) IBOutlet UITextField *textFieldSSIDForWiFiSettings_1;
 @property (weak, nonatomic) IBOutlet UITextField *textFieldPasswordForWiFiSettings_1;
 @property (weak, nonatomic) IBOutlet UITextField *textFieldSSIDForWiFiSettings_2;
@@ -95,6 +103,9 @@
     UHFDevice* passDev;
     NewDevConnStatusViewController* childViewController;
     
+    NSArray *bleServiceMode;
+    NSArray *bleMode;
+    NSArray *tcpClientEnable;
     NSArray *buzzerAdapterOperation;
     NSArray *controlBuzzerAdapter;
     NSArray *outputInterfaceTypes;
@@ -120,6 +131,9 @@
     allTagItems = [[NSMutableArray alloc]init];
     [childViewController clearLog];
     
+    bleServiceMode = @[@"SERIAL", @"KEYBOARD"];
+    bleMode = @[@"OFF", @"SERVER"];
+    tcpClientEnable = @[@"DISABLE", @"ENABLE"];
     buzzerAdapterOperation = @[@"OFF", @"ONCE", @"REPEAT"];
     controlBuzzerAdapter = @[@"SUCCESS", @"FAILURE", @"DISABLE", @"AUTO"];
     outputInterfaceTypes = @[@"AUTO", @"NOT_AUTO"];
@@ -182,6 +196,21 @@
     self.pickerOutputFormat.delegate = self;
     [self.pickerOutputFormat setTag:9];
     [self.pickerOutputFormat selectRow:0 inComponent:0 animated:true];
+    
+    self.pickerBleServiceMode.dataSource = self;
+    self.pickerBleServiceMode.delegate = self;
+    [self.pickerBleServiceMode setTag:10];
+    [self.pickerBleServiceMode selectRow:0 inComponent:0 animated:true];
+    
+    self.pickerBleMode.dataSource = self;
+    self.pickerBleMode.delegate = self;
+    [self.pickerBleMode setTag:11];
+    [self.pickerBleMode selectRow:0 inComponent:0 animated:true];
+    
+    self.pickerViewWiFiTcpClientEnable.dataSource = self;
+    self.pickerViewWiFiTcpClientEnable.delegate = self;
+    [self.pickerViewWiFiTcpClientEnable setTag:12];
+    [self.pickerViewWiFiTcpClientEnable selectRow:0 inComponent:0 animated:true];
 
     keyboardIsUp = false;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardDidShowNotification object:nil];
@@ -272,6 +301,21 @@
         }
             break;
 
+        case 10: {
+            iCount = bleServiceMode.count;
+        }
+            break;
+            
+        case 11: {
+            iCount = bleMode.count;
+        }
+            break;
+            
+        case 12: {
+            iCount = tcpClientEnable.count;
+        }
+            break;
+            
         default: {
             iCount = 0;
         }
@@ -326,6 +370,21 @@
             
         case 9: {
             strValue = outputFormat[row];
+        }
+            break;
+            
+        case 10: {
+            strValue = bleServiceMode[row];
+        }
+            break;
+            
+        case 11: {
+            strValue = bleMode[row];
+        }
+            break;
+            
+        case 12: {
+            strValue = tcpClientEnable[row];
         }
             break;
 
@@ -433,6 +492,21 @@
 
         case 9: {
             strValue = outputFormat[row];
+        }
+            break;
+            
+        case 10: {
+            strValue = bleServiceMode[row];
+        }
+            break;
+            
+        case 11: {
+            strValue = bleMode[row];
+        }
+            break;
+            
+        case 12: {
+            strValue = tcpClientEnable[row];
         }
             break;
 
@@ -548,6 +622,98 @@
                 UR0250 *ur0250 = (UR0250 *) self->passDev;
                 
                 [ur0250 setBleDeviceName:deviceName];
+            }
+        }
+    }
+}
+
+- (IBAction)actGetBleServiceMode:(id)sender {
+    if (self->passDev != nil) {
+        if (self->passDev.getDevInfo.currentConnStatus == DevDisconnected) {
+            [childViewController addLog:@"Device Not Connected!"];
+        } else {
+            if ([self->passDev isMemberOfClass:[TS100 class]]) {
+                TS100* ts100 = (TS100*) self->passDev;
+                
+                [ts100 getBleServiceMode];
+            }
+        }
+    }
+}
+
+- (IBAction)actSetBleServiceMode:(id)sender {
+    if (self->passDev != nil) {
+        if (self->passDev.getDevInfo.currentConnStatus == DevDisconnected) {
+            [childViewController addLog:@"Device Not Connected!"];
+        } else {
+            BLEServiceMode bleServiceMode;
+            switch ([self.pickerBleServiceMode selectedRowInComponent:0]) {
+                case 0: {
+                    bleServiceMode = BLE_Serial;
+                    NSLog(@"BLE_Serial");
+                    break;
+                }
+                case 1: {
+                    bleServiceMode = BLE_Keyboard;
+                    NSLog(@"BLE_Keyboard");
+                    break;
+                }
+                default: {
+                    NSLog(@"DEFAULT");
+                    bleServiceMode = BLE_Serial;
+                    break;
+                }
+            }
+            if ([self->passDev isMemberOfClass:[TS100 class]]) {
+                TS100* ts100 = (TS100*) self->passDev;
+                
+                [ts100 setBleServiceMode:bleServiceMode];
+            }
+        }
+    }
+}
+
+- (IBAction)actGetBleMode:(id)sender {
+    if (self->passDev != nil) {
+        if (self->passDev.getDevInfo.currentConnStatus == DevDisconnected) {
+            [childViewController addLog:@"Device Not Connected!"];
+        } else {
+            if ([self->passDev isMemberOfClass:[TS100 class]]) {
+                TS100* ts100 = (TS100*) self->passDev;
+                
+                [ts100 getBleMode];
+            }
+        }
+    }
+}
+
+- (IBAction)actSetBleMode:(id)sender {
+    if (self->passDev != nil) {
+        if (self->passDev.getDevInfo.currentConnStatus == DevDisconnected) {
+            [childViewController addLog:@"Device Not Connected!"];
+        } else {
+            BLEMode bleMode;
+            switch ([self.pickerBleMode selectedRowInComponent:0]) {
+                case 0: {
+                    bleMode = BLE_OFF;
+                    NSLog(@"BLE_OFF");
+                    break;
+                }
+                case 1: {
+                    bleMode = BLE_Server;
+                    NSLog(@"BLE_Server");
+                    break;
+                }
+                default: {
+                    NSLog(@"DEFAULT");
+                    bleMode = BLE_OFF;
+                    break;
+                }
+            }
+            if ([self->passDev isMemberOfClass:[TS100 class]]) {
+                TS100* ts100 = (TS100*) self->passDev;
+                
+                [ts100 setBleMode:bleMode];
             }
         }
     }
@@ -1010,6 +1176,34 @@
     }
 }
 
+- (IBAction)actGetWiFiHostName:(id)sender {
+    if (self->passDev != nil) {
+        if (self->passDev.getDevInfo.currentConnStatus == DevDisconnected) {
+            [childViewController addLog:@"Device Not Connected!"];
+        } else {
+            if ([self->passDev isMemberOfClass:[TS100 class]]) {
+                TS100 *ts100 = (TS100 *) self->passDev;
+                
+                [ts100 getWiFiHostName];
+            }
+        }
+    }
+}
+
+- (IBAction)actSetWiFiHostName:(id)sender {
+    if (self->passDev != nil) {
+        if (self->passDev.getDevInfo.currentConnStatus == DevDisconnected) {
+            [childViewController addLog:@"Device Not Connected!"];
+        } else {
+            if ([self->passDev isMemberOfClass:[TS100 class]]) {
+                TS100 *ts100 = (TS100 *) self->passDev;
+                
+                [ts100 setWiFiHostName:@""];
+            }
+        }
+    }
+}
+
 - (IBAction)actGetRemoteHost:(id)sender {
     if (self->passDev != nil) {
         if (self->passDev.getDevInfo.currentConnStatus == DevDisconnected) {
@@ -1073,6 +1267,45 @@
     int final = round(100 * slider.value) / 100;
     
     self->_labRemoteHostConnectionTimeout.text = [NSString stringWithFormat:@"%d", final];
+}
+
+- (IBAction)actWiFiTcpClientConnectionChanged:(id)sender {
+    UISlider *slider = (UISlider *) sender;
+    int final = round(100 * slider.value) / 100;
+    
+    self->_labWiFiTcpClientConnectionTimeout.text = [NSString stringWithFormat:@"%d", final];
+}
+
+
+- (IBAction)actGetWiFiTCPClient:(id)sender {
+    if (self->passDev != nil) {
+        if (self->passDev.getDevInfo.currentConnStatus == DevDisconnected) {
+            [childViewController addLog:@"Device Not Connected!"];
+        } else {
+            if ([self->passDev isMemberOfClass:[TS100 class]]) {
+                TS100 *ts100 = (TS100 *) self->passDev;
+                [ts100 getWiFiTcpClient];
+            }
+        }
+    }
+}
+
+- (IBAction)actSetWiFiTCPClient:(id)sender {
+    BOOL enable = [self.pickerViewWiFiTcpClientEnable selectedRowInComponent:0] == 0 ? false : true;
+    NSString* ip = self->_textFieldWiFiTcpClientIP.text;
+    NSString* port = self->_textFieldWiFiTcpClientPort.text;
+    int connectionTimeout = round(100 * self.sliderWiFiTcpClientConnectionTime.value) / 100;
+    
+    if (self->passDev != nil) {
+        if (self->passDev.getDevInfo.currentConnStatus == DevDisconnected) {
+            [childViewController addLog:@"Device Not Connected!"];
+        } else {
+            if ([self->passDev isMemberOfClass:[TS100 class]]) {
+                TS100 *ts100 = (TS100 *) self->passDev;
+                [ts100 setWiFiTcpClient:enable remoteServerIp:ip remoteServerPort:port connectionTimeout:connectionTimeout];
+            }
+        }
+    }
 }
 
 - (IBAction)actSetWiFiSettings_1:(id)sender {
@@ -1674,7 +1907,7 @@
         default:
             break;
     }
-    [childViewController addLog:[NSString stringWithFormat:@"didGetBuzzerOperationMode, bom = %@",bomString]];
+    [childViewController addLog:[NSString stringWithFormat:@"didGetBuzzerOperationMode, bom=%@",bomString]];
 }
 
 -(void)didGetOutputInterfaces:(int) settingValue {
@@ -1825,6 +2058,7 @@
         [self.switchTAB setOn:false];
     }
     [childViewController addLog:[NSString stringWithFormat:@"didGetPostDataDelimiter, PostDataDelimiter = %@",delimeterString]];
+    [childViewController reloadData];
 }
 
 -(void)didGetTagMemorySelection:(TagMemorySelection)tagMemorySelection{
@@ -1862,7 +2096,7 @@
 }
 
 -(void)didGetRemoteHost:(int)connectTime InetSocketAddress:(InetSocketAddress *)inetSocketAddress {
-    [childViewController addLog:[NSString stringWithFormat:@"didGetRemoteHost, connectTime = %d, address = %@, port = %d", connectTime, [[inetSocketAddress getHost] getHostAddress], [inetSocketAddress getPort]]];
+    [childViewController addLog:[NSString stringWithFormat:@"didGetRemoteHost, \nconnectTime = %d, \naddress = %@, \nport = %d", connectTime, [[inetSocketAddress getHost] getHostAddress], [inetSocketAddress getPort]]];
     
     [self.sliderRemoteHostConnectionTime setValue:connectTime];
     [self.labRemoteHostConnectionTimeout setText:[NSString stringWithFormat:@"%d",connectTime]];
@@ -2020,13 +2254,14 @@
 }
 
 -(void)didGetFirmwareVersion:(NSString *)fwVer {
-    [childViewController addLog:[NSString stringWithFormat:@"didGetFirmwareVersion = %@",fwVer]];
+    [childViewController addLog:[NSString stringWithFormat:@"didGetFirmwareVersion, fwVer = %@",fwVer]];
     [passDev getDevInfo].devROMVersion = fwVer;
     [childViewController reloadData];
 }
 
 -(void)didGetBleRomVersion:(NSString *)romVersion{
     [childViewController addLog:[NSString stringWithFormat:@"didGetBleRomVersion, romVersion = %@",romVersion]];
+    [childViewController reloadData];
 }
 
 - (void)didGetBLEFirmwareVersion:(NSString *)fwVer {
@@ -2036,14 +2271,17 @@
 }
 
 -(void)didDiscoverTagInfo:(GNPTagInfo*)taginfo{
-    NSString *string = [NSString stringWithFormat:@"%@\n%@\n%@\n%@\n%@",
-    [NSString stringWithFormat:@"didDiscoverTagInfo, taginfo.TagNumber = %d",taginfo.TagNumber],
-    [NSString stringWithFormat:@"didDiscoverTagInfo, taginfo.RSSI = %02X",taginfo.RSSI],
-    [NSString stringWithFormat:@"didDiscoverTagInfo, taginfo.Frequency = %f",[taginfo getFrequency]],
-    [NSString stringWithFormat:@"didDiscoverTagInfo, taginfo.EPCHexString = %@",taginfo.EPCHexString],
-    [NSString stringWithFormat:@"didDiscoverTagInfo, taginfo.TIDHexString = %@",taginfo.TIDHexString]];
-    [childViewController displayLog:string];
-//    [childViewController addLog:[NSString stringWithFormat:@"didDiscoverTagInfo, taginfo.TagNumber = %d",taginfo.TagNumber]];
+    if (self->passDev != nil && self->passDev.getDevInfo.currentConnStatus == DevConnected) {
+        [self->passDev stopInventory];
+    }
+//    NSString *string = [NSString stringWithFormat:@"%@\n%@\n%@\n%@\n%@",
+//    [NSString stringWithFormat:@"didDiscoverTagInfo, taginfo.TagNumber = %d",taginfo.TagNumber],
+//    [NSString stringWithFormat:@"didDiscoverTagInfo, taginfo.RSSI = %02X",taginfo.RSSI],
+//    [NSString stringWithFormat:@"didDiscoverTagInfo, taginfo.Frequency = %f",[taginfo getFrequency]],
+//    [NSString stringWithFormat:@"didDiscoverTagInfo, taginfo.EPCHexString = %@",taginfo.EPCHexString],
+//    [taginfo.TIDHexString isEqual: @""] ? @"" : [NSString stringWithFormat:@"didDiscoverTagInfo, taginfo.TIDHexString = %@",taginfo.TIDHexString]];
+//    [childViewController displayLog:string];
+////    [childViewController addLog:[NSString stringWithFormat:@"didDiscoverTagInfo, taginfo.TagNumber = %d",taginfo.TagNumber]];
 //    [childViewController addLog:[NSString stringWithFormat:@"didDiscoverTagInfo, taginfo.RSSI = %02X",taginfo.RSSI]];
 //    [childViewController addLog:[NSString stringWithFormat:@"didDiscoverTagInfo, taginfo.Frequency = %f",[taginfo getFrequency]]];
 ////    [childViewController addLog:[NSString stringWithFormat:@"didDiscoverTagInfo, taginfo.EPC = %@",taginfo.EPC]];
@@ -2053,12 +2291,12 @@
 }
 
 - (void)didDiscoverTagInfoEx:(GNPDecodedTagData *)decodedTagData{
-    NSString *string = [NSString stringWithFormat:@"%@\n%@\n%@\n%@",
-    [NSString stringWithFormat:@"didDiscoverTagInfoEx, decodedTagData.TID = %@",decodedTagData.TID],
-    [NSString stringWithFormat:@"didDiscoverTagInfoEx, decodedTagData.TagSerialNumber = %@",decodedTagData.TagSerialNumber],
-    [NSString stringWithFormat:@"didDiscoverTagInfoEx, decodedTagData.DeviceSerialNumber = %@",decodedTagData.DeviceSerialNumber],
-    [NSString stringWithFormat:@"didDiscoverTagInfoEx, decodedTagData.DecodedDataList = %@",decodedTagData.DecodedDataList]];
-    [childViewController displayLog:string];
+//    NSString *string = [NSString stringWithFormat:@"%@\n%@\n%@\n%@",
+//    [NSString stringWithFormat:@"didDiscoverTagInfoEx, decodedTagData.TID = %@",decodedTagData.TID],
+//    [NSString stringWithFormat:@"didDiscoverTagInfoEx, decodedTagData.TagSerialNumber = %@",decodedTagData.TagSerialNumber],
+//    [NSString stringWithFormat:@"didDiscoverTagInfoEx, decodedTagData.DeviceSerialNumber = %@",decodedTagData.DeviceSerialNumber],
+//    [NSString stringWithFormat:@"didDiscoverTagInfoEx, decodedTagData.DecodedDataList = %@",decodedTagData.DecodedDataList]];
+//    [childViewController displayLog:string];
 //    [childViewController addLog:[NSString stringWithFormat:@"didDiscoverTagInfoEx, decodedTagData.TID = %@",decodedTagData.TID]];
 //    [childViewController addLog:[NSString stringWithFormat:@"didDiscoverTagInfoEx, decodedTagData.TagSerialNumber = %@",decodedTagData.TagSerialNumber]];
 //    [childViewController addLog:[NSString stringWithFormat:@"didDiscoverTagInfoEx, decodedTagData.DeviceSerialNumber = %@",decodedTagData.DeviceSerialNumber]];
@@ -2066,13 +2304,13 @@
 }
 
 -(void)didTagRemoved:(GNPTagInfo *)taginfo {
-    NSString *string = [NSString stringWithFormat:@"%@\n%@\n%@\n%@\n%@",
-    [NSString stringWithFormat:@"didTagRemoved, taginfo.TagNumber = %d",taginfo.TagNumber],
-    [NSString stringWithFormat:@"didTagRemoved, taginfo.RSSI = %02X",taginfo.RSSI],
-    [NSString stringWithFormat:@"didTagRemoved, taginfo.Frequency = %f",[taginfo getFrequency]],
-    [NSString stringWithFormat:@"didTagRemoved, taginfo.EPCHexString = %@",taginfo.EPCHexString],
-    [NSString stringWithFormat:@"didTagRemoved, taginfo.TIDHexString = %@",taginfo.TIDHexString]];
-    [childViewController displayLog:string];
+//    NSString *string = [NSString stringWithFormat:@"%@\n%@\n%@\n%@\n%@",
+//    [NSString stringWithFormat:@"didTagRemoved, taginfo.TagNumber = %d",taginfo.TagNumber],
+//    [NSString stringWithFormat:@"didTagRemoved, taginfo.RSSI = %02X",taginfo.RSSI],
+//    [NSString stringWithFormat:@"didTagRemoved, taginfo.Frequency = %f",[taginfo getFrequency]],
+//    [NSString stringWithFormat:@"didTagRemoved, taginfo.EPCHexString = %@",taginfo.EPCHexString],
+//    [NSString stringWithFormat:@"didTagRemoved, taginfo.TIDHexString = %@",taginfo.TIDHexString]];
+//    [childViewController displayLog:string];
 //    [childViewController addLog:[NSString stringWithFormat:@"didTagRemoved, taginfo.TagNumber = %d",taginfo.TagNumber]];
 //    [childViewController addLog:[NSString stringWithFormat:@"didTagRemoved, taginfo.RSSI = %02X",taginfo.RSSI]];
 //    [childViewController addLog:[NSString stringWithFormat:@"didTagRemoved, taginfo.Frequency = %f",[taginfo getFrequency]]];
@@ -2093,5 +2331,43 @@
 -(void)didGeneralTimeout:(NSString *)strCMDName ErrMessage:(NSString *)strErrorMessage Data:(NSData *)data {
     [childViewController addLog:[NSString stringWithFormat:@"didGeneralTimeout strCMDName = %@, strErrorMessage = %@, data = %@", strCMDName, strErrorMessage, data]];
 }
+
+
+- (void)didGetWiFiTcpClient:(BOOL)enable remoteServerIp:(NSString *)remoteServerIp remoteServerPort:(NSString*)remoteServerPort connectionTimeout:(int)connectionTimeout {
+    [childViewController addLog:[NSString stringWithFormat:@"didGetWiFiTcpClient, \nenable=%@, \nremoteServerIp=%@, \nremoteServerPort=%@, \nconnectionTimeout=%d", enable ? @"ENABLE" : @"DISABLE", remoteServerIp, remoteServerPort, connectionTimeout]];
+    int row = enable && ![remoteServerIp isEqual: @""] ? 1 : 0;
+    [self.pickerViewWiFiTcpClientEnable selectRow:row inComponent:0 animated:true];
+    [self.sliderWiFiTcpClientConnectionTime setValue:connectionTimeout];
+    [self.labWiFiTcpClientConnectionTimeout setText:[NSString stringWithFormat:@"%d",connectionTimeout]];
+    [self.textFieldWiFiTcpClientIP setText:remoteServerIp];
+    [self.textFieldWiFiTcpClientPort setText:remoteServerPort];
+}
+
+- (void)didGetBleServiceMode:(BLEServiceMode)bleServiceMode{
+    [childViewController addLog:[NSString stringWithFormat:@"didGetBleServiceMode bleServiceMode=%@", bleServiceMode == BLE_Serial ? @"SERIAL" : @"KEYBOARD"]];
+    int row = bleServiceMode == BLE_Serial ? 0 : 1;
+    [self.pickerBleServiceMode selectRow:row inComponent:0 animated:true];
+    [self.pickerBleServiceMode reloadComponent:0];
+}
+
+- (void)didGetBleMode:(BLEMode)bleMode{
+    [childViewController addLog:[NSString stringWithFormat:@"didGetBleMode bleMode=%@", bleMode == BLE_OFF ? @"OFF" : @"SERVER"]];
+    int row = bleMode == BLE_OFF ? 0 : 1;
+    [self.pickerBleMode selectRow:row inComponent:0 animated:true];
+    [self.pickerBleMode reloadComponent:0];
+}
+
+- (void)didGetWiFiHostName:(NSString *)hostName{
+    [childViewController addLog:[NSString stringWithFormat:@"didGetWiFiHostName hostName=%@", hostName]];
+    [self.textFieldWiFiHostName setText:hostName];
+}
+
+- (void)didGetTcpClient:(BOOL)enable remoteServerIp:(NSString *)remoteServerIp remoteServerPort:(NSString *)remoteServerPort connectionTimeout:(int)connectionTimeout {
+    [self.pickerViewWiFiTcpClientEnable selectRow:enable ? 1 : 0 inComponent:0 animated:true];
+    [self.textFieldWiFiTcpClientIP setText:remoteServerIp];
+    [self.textFieldWiFiTcpClientPort setText:remoteServerPort];
+    [self.labWiFiTcpClientConnectionTimeout setText:[NSString stringWithFormat:@"%d", connectionTimeout]];
+}
+
 
 @end

@@ -1108,7 +1108,7 @@
 }
 
 -(void)didGetFirmwareVersion:(NSString *)fwVer {
-    [childViewController addLog:[NSString stringWithFormat:@"didGetFirmwareVersion = %@",fwVer]];
+    [childViewController addLog:[NSString stringWithFormat:@"didGetFirmwareVersion, fwVer = %@",fwVer]];
     [passDev getDevInfo].devROMVersion = fwVer;
     [childViewController reloadData];
 }
@@ -1123,14 +1123,22 @@
     [childViewController reloadData];
 }
 
+- (void)didGetWiFiMacAddress:(NSString *)wifiMacAddress {
+    [childViewController addLog:[NSString stringWithFormat:@"didGetWiFiMacAddress, wifiMacAddress = %@",wifiMacAddress]];
+    [childViewController reloadData];
+}
+
 -(void)didDiscoverTagInfo:(GNPTagInfo*)taginfo{
-    NSString *string = [NSString stringWithFormat:@"%@\n%@\n%@\n%@\n%@",
-    [NSString stringWithFormat:@"didDiscoverTagInfo, taginfo.TagNumber = %d",taginfo.TagNumber],
-    [NSString stringWithFormat:@"didDiscoverTagInfo, taginfo.RSSI = %02X",taginfo.RSSI],
-    [NSString stringWithFormat:@"didDiscoverTagInfo, taginfo.Frequency = %f",[taginfo getFrequency]],
-    [NSString stringWithFormat:@"didDiscoverTagInfo, taginfo.EPCHexString = %@",taginfo.EPCHexString],
-    [NSString stringWithFormat:@"didDiscoverTagInfo, taginfo.TIDHexString = %@",taginfo.TIDHexString]];
-    [childViewController displayLog:string];
+    if (self->passDev != nil && self->passDev.getDevInfo.currentConnStatus == DevConnected) {
+        [self->passDev stopInventory];
+    }
+//    NSString *string = [NSString stringWithFormat:@"%@\n%@\n%@\n%@\n%@",
+//    [NSString stringWithFormat:@"didDiscoverTagInfo, taginfo.TagNumber = %d",taginfo.TagNumber],
+//    [NSString stringWithFormat:@"didDiscoverTagInfo, taginfo.RSSI = %02X",taginfo.RSSI],
+//    [NSString stringWithFormat:@"didDiscoverTagInfo, taginfo.Frequency = %f",[taginfo getFrequency]],
+//    [NSString stringWithFormat:@"didDiscoverTagInfo, taginfo.EPCHexString = %@",taginfo.EPCHexString],
+//    [taginfo.TIDHexString isEqual: @""] ? @"" : [NSString stringWithFormat:@"didDiscoverTagInfo, taginfo.TIDHexString = %@",taginfo.TIDHexString]];
+//    [childViewController displayLog:string];
 //    [childViewController addLog:[NSString stringWithFormat:@"didDiscoverTagInfo, taginfo.TagNumber = %d",taginfo.TagNumber]];
 //    [childViewController addLog:[NSString stringWithFormat:@"didDiscoverTagInfo, taginfo.RSSI = %02X",taginfo.RSSI]];
 //    [childViewController addLog:[NSString stringWithFormat:@"didDiscoverTagInfo, taginfo.Frequency = %f",[taginfo getFrequency]]];
@@ -1141,12 +1149,12 @@
 }
 
 - (void)didDiscoverTagInfoEx:(GNPDecodedTagData *)decodedTagData{
-    NSString *string = [NSString stringWithFormat:@"%@\n%@\n%@\n%@",
-    [NSString stringWithFormat:@"didDiscoverTagInfoEx, decodedTagData.TID = %@",decodedTagData.TID],
-    [NSString stringWithFormat:@"didDiscoverTagInfoEx, decodedTagData.TagSerialNumber = %@",decodedTagData.TagSerialNumber],
-    [NSString stringWithFormat:@"didDiscoverTagInfoEx, decodedTagData.DeviceSerialNumber = %@",decodedTagData.DeviceSerialNumber],
-    [NSString stringWithFormat:@"didDiscoverTagInfoEx, decodedTagData.DecodedDataList = %@",decodedTagData.DecodedDataList]];
-    [childViewController displayLog:string];
+//    NSString *string = [NSString stringWithFormat:@"%@\n%@\n%@\n%@",
+//    [NSString stringWithFormat:@"didDiscoverTagInfoEx, decodedTagData.TID = %@",decodedTagData.TID],
+//    [NSString stringWithFormat:@"didDiscoverTagInfoEx, decodedTagData.TagSerialNumber = %@",decodedTagData.TagSerialNumber],
+//    [NSString stringWithFormat:@"didDiscoverTagInfoEx, decodedTagData.DeviceSerialNumber = %@",decodedTagData.DeviceSerialNumber],
+//    [NSString stringWithFormat:@"didDiscoverTagInfoEx, decodedTagData.DecodedDataList = %@",decodedTagData.DecodedDataList]];
+//    [childViewController displayLog:string];
 //    [childViewController addLog:[NSString stringWithFormat:@"didDiscoverTagInfoEx, decodedTagData.TID = %@",decodedTagData.TID]];
 //    [childViewController addLog:[NSString stringWithFormat:@"didDiscoverTagInfoEx, decodedTagData.TagSerialNumber = %@",decodedTagData.TagSerialNumber]];
 //    [childViewController addLog:[NSString stringWithFormat:@"didDiscoverTagInfoEx, decodedTagData.DeviceSerialNumber = %@",decodedTagData.DeviceSerialNumber]];
@@ -1154,13 +1162,13 @@
 }
 
 -(void)didTagRemoved:(GNPTagInfo *)taginfo {
-    NSString *string = [NSString stringWithFormat:@"%@\n%@\n%@\n%@\n%@",
-    [NSString stringWithFormat:@"didTagRemoved, taginfo.TagNumber = %d",taginfo.TagNumber],
-    [NSString stringWithFormat:@"didTagRemoved, taginfo.RSSI = %02X",taginfo.RSSI],
-    [NSString stringWithFormat:@"didTagRemoved, taginfo.Frequency = %f",[taginfo getFrequency]],
-    [NSString stringWithFormat:@"didTagRemoved, taginfo.EPCHexString = %@",taginfo.EPCHexString],
-    [NSString stringWithFormat:@"didTagRemoved, taginfo.TIDHexString = %@",taginfo.TIDHexString]];
-    [childViewController displayLog:string];
+//    NSString *string = [NSString stringWithFormat:@"%@\n%@\n%@\n%@\n%@",
+//    [NSString stringWithFormat:@"didTagRemoved, taginfo.TagNumber = %d",taginfo.TagNumber],
+//    [NSString stringWithFormat:@"didTagRemoved, taginfo.RSSI = %02X",taginfo.RSSI],
+//    [NSString stringWithFormat:@"didTagRemoved, taginfo.Frequency = %f",[taginfo getFrequency]],
+//    [NSString stringWithFormat:@"didTagRemoved, taginfo.EPCHexString = %@",taginfo.EPCHexString],
+//    [NSString stringWithFormat:@"didTagRemoved, taginfo.TIDHexString = %@",taginfo.TIDHexString]];
+//    [childViewController displayLog:string];
 //    [childViewController addLog:[NSString stringWithFormat:@"didTagRemoved, taginfo.TagNumber = %d",taginfo.TagNumber]];
 //    [childViewController addLog:[NSString stringWithFormat:@"didTagRemoved, taginfo.RSSI = %02X",taginfo.RSSI]];
 //    [childViewController addLog:[NSString stringWithFormat:@"didTagRemoved, taginfo.Frequency = %f",[taginfo getFrequency]]];

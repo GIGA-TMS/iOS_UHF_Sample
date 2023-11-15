@@ -2,9 +2,21 @@
 //  TS100.h
 //  UHFSDK
 //
+//  Created by WadeGigatms on 2023/6/14.
+//  Copyright © 2023 Gianni. All rights reserved.
+//
+
+#ifndef TS100_h
+#define TS100_h
+
+//
+//  TS100.h
+//  UHFSDK
+//
 //  Created by Gianni on 2019/4/29.
 //  Maintained by Jack Jang, Syscode on 2020/05/15.
 //  Maintained by Wade on 2021/3/23.
+//  Maintained by Wade on 2023/6/14.
 //  Copyright © 2019 Gianni. All rights reserved.
 //
 
@@ -479,8 +491,35 @@ typedef NS_ENUM(Byte, TS100SpecialCode){
  */
 -(void)setEpcNormalize:(BOOL) isTemp Enable:(BOOL) enable;
 
+// For ESP32 Module
+
+-(void)getWiFiTcpClient;
+
+-(void)setWiFiTcpClient:(BOOL)enable remoteServerIp:(NSString*)remoteServerIp remoteServerPort:(NSString*)remoteServerPort connectionTimeout:(int)connectionTimeout;
+
+-(void)getWiFiHostName;
+
+-(void)setWiFiHostName:(NSString*)hostName;
+
+-(void)getBleServiceMode;
+
+-(void)setBleServiceMode:(BLEServiceMode)bleServiceMode;
+
+-(void)getBleMode;
+
+-(void)setBleMode:(BLEMode)bleMode;
+
+-(void)getBleInformation;
+
+-(void)getWiFiInformation;
+
+-(void)getNetworkInformation;
+
 +(NSData *)dataFromHexString:(NSString *) string;
 
 @end
 
 NS_ASSUME_NONNULL_END
+
+
+#endif /* TS100_h */

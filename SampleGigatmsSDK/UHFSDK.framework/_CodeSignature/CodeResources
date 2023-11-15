@@ -4,6 +4,10 @@
 <dict>
 	<key>files</key>
 	<dict>
+		<key>Headers/BLEInformation.h</key>
+		<data>
+		PNrOiZ2Ad3tYIe1+tg7dmRF6mLw=
+		</data>
 		<key>Headers/BaseDevice.h</key>
 		<data>
 		sro74ftY+kGhaA/8aihPRpV8Hkw=
@@ -38,7 +42,7 @@
 		</data>
 		<key>Headers/GNPSwAPICode.h</key>
 		<data>
-		RXlL+rfBGX8ML0YVgubsO7qFibg=
+		54Lr5OZlv7JzAhpnYD7Ed83YjcU=
 		</data>
 		<key>Headers/GNPTagInfo.h</key>
 		<data>
@@ -46,7 +50,7 @@
 		</data>
 		<key>Headers/GNetPlus.h</key>
 		<data>
-		aYTwcj4tJROxT4fcDw9uqaW7+94=
+		XPXgdt6Pjj+A6eq3VYL76p97mMc=
 		</data>
 		<key>Headers/GTBLEDevInfo.h</key>
 		<data>
@@ -74,11 +78,11 @@
 		</data>
 		<key>Headers/IUHFDeviceListener.h</key>
 		<data>
-		a7EyeQfHbaDwltyLDE78yJ1BYGg=
+		fMVyBgL3ubKOb9gUh5Mlxh9AZtc=
 		</data>
 		<key>Headers/IUM800LListener.h</key>
 		<data>
-		w+fJOXdyQsp64copl1u5jc+yCBQ=
+		28/OmBwjYzhiifZpuFASqNnbioY=
 		</data>
 		<key>Headers/IUR0250Listener.h</key>
 		<data>
@@ -91,6 +95,10 @@
 		<key>Headers/InetSocketAddress.h</key>
 		<data>
 		mKHgL/jqdn4TDHIWvAbYX8Vggoo=
+		</data>
+		<key>Headers/NetworkInformation.h</key>
+		<data>
+		S0SGrp87vlH7SJwBb1y0S/9hBpc=
 		</data>
 		<key>Headers/QTReadParameter.h</key>
 		<data>
@@ -114,7 +122,7 @@
 		</data>
 		<key>Headers/TS100.h</key>
 		<data>
-		8rtAgR22x0SEZcZFVRMl08JiqEc=
+		pjIv5fgzP1Mlg8B/mvKMtBFPPcc=
 		</data>
 		<key>Headers/TS100A.h</key>
 		<data>
@@ -152,13 +160,17 @@
 		<data>
 		y9C8NTKyIBr3XH7abG2W66biUcw=
 		</data>
+		<key>Headers/WiFiInformation.h</key>
+		<data>
+		/ytfMS3vqtowUBYDOo0gjK4sNAw=
+		</data>
 		<key>Headers/XEPCLentT.h</key>
 		<data>
 		nL/tj5ojYfLTOEq901h4eM7Nkio=
 		</data>
 		<key>Info.plist</key>
 		<data>
-		oFVhDhG7+aUnEhuDL7FPC5/Uk7c=
+		SVk+tX8N4EL1VORMM2ncjBbFWzA=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -167,6 +179,13 @@
 	</dict>
 	<key>files2</key>
 	<dict>
+		<key>Headers/BLEInformation.h</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			Cjo19OUZzuQLH7M8HcKUYrGhKlUVTKKeXAddtcSBi/o=
+			</data>
+		</dict>
 		<key>Headers/BaseDevice.h</key>
 		<dict>
 			<key>hash2</key>
@@ -227,7 +246,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			uizy4Z7m6cbOxLF7IyuiNDRkFoi5GmNjMyflH35HTfU=
+			jmDlqTR7BIHqI7gx0VohVUIU/RII03hpxn8yFwsVgVU=
 			</data>
 		</dict>
 		<key>Headers/GNPTagInfo.h</key>
@@ -241,7 +260,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			ERK1VUxZD+e02w667uwk79h4mHBS6r9kZvjZkWDIkFw=
+			7RThnLRZvT5yKC/05SHL2YCFzHMiuUXLNuIF52vBZ4I=
 			</data>
 		</dict>
 		<key>Headers/GTBLEDevInfo.h</key>
@@ -290,14 +309,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			1C1TY62cnzgTnkdYb0rqnCW4VZhUXkKSjJjP7ezl4Vg=
+			9TVJNiZxBYW0PYdmjatBNbeheO/MLBY8b4L1yp5VSnw=
 			</data>
 		</dict>
 		<key>Headers/IUM800LListener.h</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			hFzvCIXvk8IETsKvNtossqve9a4Puk4auN0XsBwXgCM=
+			1GELIIU+hqd3BY7A7I7gbEkEmqLZz2p+hpDEFClf8Do=
 			</data>
 		</dict>
 		<key>Headers/IUR0250Listener.h</key>
@@ -319,6 +338,13 @@
 			<key>hash2</key>
 			<data>
 			kQxvQPPV23TR5RG+iuvWhq61udTBMWETnZ8Y2rkB5tQ=
+			</data>
+		</dict>
+		<key>Headers/NetworkInformation.h</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			/IT/dBdpNmtQwvoNdPUfAmEBxN1zRSR/47EwsSd50fk=
 			</data>
 		</dict>
 		<key>Headers/QTReadParameter.h</key>
@@ -360,7 +386,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			hxPqR73ugVEaVAR0KZPR7395/S59XclAjltMlOk5HXg=
+			bL3hLcxmE9SItEE2zZ6xF2NONU64XhzK1Kny1td0RIM=
 			</data>
 		</dict>
 		<key>Headers/TS100A.h</key>
@@ -424,6 +450,13 @@
 			<key>hash2</key>
 			<data>
 			4+B1E1Y7zp3/qNFUEikRklRmDPi4G0LXOc776VR+ARw=
+			</data>
+		</dict>
+		<key>Headers/WiFiInformation.h</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			3Kr6aFV7ooYg9YWcB8OGg6EVWmjx0Dk4709zd9JrWQw=
 			</data>
 		</dict>
 		<key>Headers/XEPCLentT.h</key>

@@ -141,9 +141,9 @@
             [self.labDevConnStatus setBackgroundColor:UIColor.greenColor];
             [self.btnConnect setTitle:@"Disconnect" forState:UIControlStateNormal];
             if (!isConnected) {
-                NSLog(@"DevConnStatusViewController DevConnected getFirmwareVersion");
-                [passDev getFirmwareVersion];
-                [self performSelector:@selector(delayAction) withObject:nil afterDelay:0.3];
+                [self performSelector:@selector(delayGetFirmwareVersion) withObject:nil afterDelay:0.30];
+                [self performSelector:@selector(delayGetWiFiMacAddressAction) withObject:nil afterDelay:0.60];
+                [self performSelector:@selector(delayGetBleRomVersion) withObject:nil afterDelay:0.90];
             }
             isConnected = true;
             break;
@@ -152,7 +152,28 @@
     }
 }
 
--(void)delayAction {
+-(void)delayGetFirmwareVersion{
+    NSLog(@"NewDevConnStatusViewController delayAction getFirmwareVersion");
+    if ([self->passDev isMemberOfClass:[TS100 class]]) {
+        TS100 *ts100 = (TS100 *) self->passDev;
+        
+        [ts100 getFirmwareVersion];
+    } else if ([self->passDev isMemberOfClass:[TS100A class]]) {
+        TS100A *ts100a = (TS100A *) self->passDev;
+        
+        [ts100a getFirmwareVersion];
+    } else if ([self->passDev isMemberOfClass:[TS800 class]]) {
+        TS800 *ts800 = (TS800 *) self->passDev;
+        
+        [ts800 getFirmwareVersion];
+    } else if ([self->passDev isMemberOfClass:[UR0250 class]]) {
+        UR0250 *ur0250 = (UR0250 *) self->passDev;
+        
+        [ur0250 getFirmwareVersion];
+    }
+}
+
+-(void)delayGetBleRomVersion {
     NSLog(@"NewDevConnStatusViewController delayAction getBleRomVersion");
     if ([self->passDev isMemberOfClass:[TS100 class]]) {
         TS100 *ts100 = (TS100 *) self->passDev;
@@ -170,6 +191,27 @@
         UR0250 *ur0250 = (UR0250 *) self->passDev;
         
         [ur0250 getBleRomVersion];
+    }
+}
+
+-(void)delayGetWiFiMacAddressAction {
+    NSLog(@"NewDevConnStatusViewController delayPlusAction getWiFiMacAddress");
+    if ([self->passDev isMemberOfClass:[TS100 class]]) {
+        TS100 *ts100 = (TS100 *) self->passDev;
+        
+        [ts100 getWiFiMacAddress];
+    } else if ([self->passDev isMemberOfClass:[TS100A class]]) {
+        TS100A *ts100a = (TS100A *) self->passDev;
+        
+        [ts100a getWiFiMacAddress];
+    } else if ([self->passDev isMemberOfClass:[TS800 class]]) {
+        TS800 *ts800 = (TS800 *) self->passDev;
+        
+        [ts800 getWiFiMacAddress];
+    } else if ([self->passDev isMemberOfClass:[UR0250 class]]) {
+        UR0250 *ur0250 = (UR0250 *) self->passDev;
+        
+        [ur0250 getWiFiMacAddress];
     }
 }
 

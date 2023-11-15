@@ -12,10 +12,10 @@ iOS_UHF_Sample is a sample App to demonstrate how to use UHFSDK library.
 
 ## Pre-requisites
 
-* iOS 12.0+
+* iOS 13.0+
 * Xcode 12.0+
-* Sample v3.1.5.2
-* SDK v3.1.5.2
+* Sample v3.1.7.4
+* SDK v3.1.7.3
 
 ## Installation
 

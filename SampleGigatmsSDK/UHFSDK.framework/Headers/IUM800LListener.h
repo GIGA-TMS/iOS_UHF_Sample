@@ -16,6 +16,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 @protocol IUM800LListener <NSObject>
 
+typedef NS_ENUM(int, ModuleType){
+    ESP8266,
+    ESP32,
+};
+
 @optional
 -(void)UM800LdidGeneralSuccess:(SoftwareAPINameCode)apiCode;
 -(void)UM800LdidGeneralERROR:(SoftwareAPINameCode)apiCode ErrMessage:(NSString*)strErrorMessage;
@@ -47,6 +52,13 @@ NS_ASSUME_NONNULL_BEGIN
 -(void)UM800LdidGetIpAddress:(NSString*)ipAddress;
 -(void)UM800LdidGetBleMacAddress:(NSData*)data;
 -(void)UM800LdidGetBleDeviceName:(NSData*)data;
+
+-(void)UM800LdidGetBleInformation:(SoftwareAPINameCode)apiCode data:(NSData*)data;
+-(void)UM800LdidGetWiFiInformation:(SoftwareAPINameCode)apiCode data:(NSData*)data;
+-(void)UM800LdidGetNetworkInformation:(SoftwareAPINameCode)apiCode data:(NSData*)data;
+-(void)UM800LdidGetWiFiTcpClient:(BOOL)enable remoteServerIp:(NSString*)remoteServerIp remoteServerPort:(NSString*)remoteServerPort connectionTimeout:(int)connectionTimeout;
+
+-(void)UM800LShouldChangeModule:(ModuleType)moduleType;
 
 @end
 

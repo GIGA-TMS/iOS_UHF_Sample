@@ -134,6 +134,19 @@ typedef NS_ENUM(Byte, SoftwareAPINameCode){
     SW_EE_TS800_getIpAddress                               ,
     
     SW_CC_TS100_protectTagPrivacy                          ,
+    
+    SW_EE_TS100_getWiFiTcpClient,
+    SW_EE_TS100_setWiFiTcpClient,
+    SW_EE_TS100_getWiFiHostName,
+    SW_EE_TS100_setWiFiHostName,
+    SW_EE_TS100_getBleServiceMode,
+    SW_EE_TS100_setBleServiceMode,
+    SW_EE_TS100_getBleMode,
+    SW_EE_TS100_setBleMode,
+    SW_EE_TS100_getBleInformation,
+    SW_EE_TS100_getWiFiInformation,
+    SW_EE_TS100_getNetworkInformation,
+    
 };
 
 

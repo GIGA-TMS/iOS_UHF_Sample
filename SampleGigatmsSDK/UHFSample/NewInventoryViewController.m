@@ -34,7 +34,7 @@
     NewDevConnStatusViewController* childViewController;
     
     NSArray *tagPresentedType;
-    NSArray *activeMode;
+    NSArray *activeModes;
 }
 
 - (void)viewDidLoad {
@@ -50,7 +50,7 @@
     [childViewController clearLog];
     
     tagPresentedType = @[@"PC_EPC", @"PC_EPC_TID"];
-    activeMode = @[@"READ", @"COMMAND", @"TAG_ANALYSIS", @"CUSTOMIZED_READ", @"DEACTIVATE", @"REACTIVATE", @"DEACTIVATE_USER_BANK", @"REACTIVATE_USER_BANK"];
+    activeModes = @[@"READ", @"COMMAND", @"TAG_ANALYSIS", @"CUSTOMIZED_READ", @"DEACTIVATE", @"REACTIVATE", @"DEACTIVATE_USER_BANK", @"REACTIVATE_USER_BANK"];
     
     self.pickerTagPresentedType.dataSource = self;
     self.pickerTagPresentedType.delegate = self;
@@ -106,7 +106,7 @@
             break;
             
         case 2: {
-            iCount = activeMode.count;
+            iCount = activeModes.count;
         }
             break;
             
@@ -127,7 +127,7 @@
             break;
             
         case 2: {
-            strValue = activeMode[row];
+            strValue = activeModes[row];
         }
             break;
             
@@ -160,7 +160,7 @@
             break;
             
         case 2: {
-            strValue = activeMode[row];
+            strValue = activeModes[row];
         }
             break;
 
@@ -341,28 +341,37 @@
 #pragma mark - UHF API Callback
 
 -(void)didGetInventoryActiveMode:(ActiveMode)activeMode{
-    [childViewController addLog:[NSString stringWithFormat:@"didGetInventoryActiveMode, activeMode = %d",activeMode]];
+    int pickerViewRow = 0;
     if (activeMode == AM_READ) {
         [self.pickerActiveMode selectRow:0 inComponent:0 animated:true];
+        pickerViewRow = 0;
     } else if (activeMode == AM_COMMAND) {
         [self.pickerActiveMode selectRow:1 inComponent:0 animated:true];
+        pickerViewRow = 1;
     } else if (activeMode == AM_TAG_ANALYSIS) {
         [self.pickerActiveMode selectRow:2 inComponent:0 animated:true];
+        pickerViewRow = 2;
     } else if (activeMode == AM_CUSTOMIZED_READ) {
         [self.pickerActiveMode selectRow:3 inComponent:0 animated:true];
+        pickerViewRow = 3;
     } else if (activeMode == AM_DEACTIVATE) {
         [self.pickerActiveMode selectRow:4 inComponent:0 animated:true];
+        pickerViewRow = 4;
     } else if (activeMode == AM_REACTIVATE) {
         [self.pickerActiveMode selectRow:5 inComponent:0 animated:true];
+        pickerViewRow = 5;
     } else if (activeMode == AM_DEACTIVATE_USER_BANK) {
         [self.pickerActiveMode selectRow:6 inComponent:0 animated:true];
+        pickerViewRow = 6;
     } else if (activeMode == AM_REACTIVATE_USER_BANK) {
         [self.pickerActiveMode selectRow:7 inComponent:0 animated:true];
+        pickerViewRow = 7;
     }
+    [childViewController addLog:[NSString stringWithFormat:@"didGetInventoryActiveMode, activeMode = %@", activeModes[pickerViewRow]]];
 }
 
 -(void)didGetFirmwareVersion:(NSString *)fwVer {
-    [childViewController addLog:[NSString stringWithFormat:@"didGetFirmwareVersion = %@",fwVer]];
+    [childViewController addLog:[NSString stringWithFormat:@"didGetFirmwareVersion, fwVer = %@",fwVer]];
     [passDev getDevInfo].devROMVersion = fwVer;
     [childViewController reloadData];
 }
@@ -372,19 +381,23 @@
 }
 
 - (void)didGetBLEFirmwareVersion:(NSString *)fwVer {
-    [childViewController addLog:[NSString stringWithFormat:@"didGetBLEFirmwareVersion, fwVer= %@",fwVer]];
+    [childViewController addLog:[NSString stringWithFormat:@"didGetBLEFirmwareVersion, fwVer = %@",fwVer]];
     [passDev getDevInfo]._bleDevInfo.devROMVersion = fwVer;
     [childViewController reloadData];
 }
 
+- (void)didGetWiFiMacAddress:(NSString *)wifiMacAddress {
+    [childViewController addLog:[NSString stringWithFormat:@"didGetWiFiMacAddress, wifiMacAddress = %@",wifiMacAddress]];
+    [childViewController reloadData];
+}
 
 -(void)didDiscoverTagInfo:(GNPTagInfo*)taginfo{
     NSString *string = [NSString stringWithFormat:@"%@\n%@\n%@\n%@\n%@",
-    [NSString stringWithFormat:@"didDiscoverTagInfo, taginfo.TagNumber = %d",taginfo.TagNumber],
-    [NSString stringWithFormat:@"didDiscoverTagInfo, taginfo.RSSI = %02X",taginfo.RSSI],
-    [NSString stringWithFormat:@"didDiscoverTagInfo, taginfo.Frequency = %f",[taginfo getFrequency]],
-    [NSString stringWithFormat:@"didDiscoverTagInfo, taginfo.EPCHexString = %@",taginfo.EPCHexString],
-    [NSString stringWithFormat:@"didDiscoverTagInfo, taginfo.TIDHexString = %@",taginfo.TIDHexString]];
+                        [NSString stringWithFormat:@"didDiscoverTagInfo, taginfo.TagNumber = %d",taginfo.TagNumber],
+                        [NSString stringWithFormat:@"didDiscoverTagInfo, taginfo.RSSI = %d",taginfo.RSSI],
+                        [NSString stringWithFormat:@"didDiscoverTagInfo, taginfo.Frequency = %f",[taginfo getFrequency]],
+                        [NSString stringWithFormat:@"didDiscoverTagInfo, taginfo.EPCHexString = %@",taginfo.EPCHexString],
+                        [taginfo.TIDHexString isEqual: @""] ? @"" : [NSString stringWithFormat:@"didDiscoverTagInfo, taginfo.TIDHexString = %@",taginfo.TIDHexString]];
     [childViewController displayLog:string];
 //    [childViewController addLog:[NSString stringWithFormat:@"didDiscoverTagInfo, taginfo.TagNumber = %d",taginfo.TagNumber]];
 //    [childViewController addLog:[NSString stringWithFormat:@"didDiscoverTagInfo, taginfo.RSSI = %02X",taginfo.RSSI]];
@@ -397,10 +410,10 @@
 
 - (void)didDiscoverTagInfoEx:(GNPDecodedTagData *)decodedTagData{
     NSString *string = [NSString stringWithFormat:@"%@\n%@\n%@\n%@",
-    [NSString stringWithFormat:@"didDiscoverTagInfoEx, decodedTagData.TID = %@",decodedTagData.TID],
-    [NSString stringWithFormat:@"didDiscoverTagInfoEx, decodedTagData.TagSerialNumber = %@",decodedTagData.TagSerialNumber],
-    [NSString stringWithFormat:@"didDiscoverTagInfoEx, decodedTagData.DeviceSerialNumber = %@",decodedTagData.DeviceSerialNumber],
-    [NSString stringWithFormat:@"didDiscoverTagInfoEx, decodedTagData.DecodedDataList = %@",decodedTagData.DecodedDataList]];
+                        [NSString stringWithFormat:@"didDiscoverTagInfoEx, decodedTagData.TID = %@",decodedTagData.TID],
+                        [NSString stringWithFormat:@"didDiscoverTagInfoEx, decodedTagData.TagSerialNumber = %@",decodedTagData.TagSerialNumber],
+                        [NSString stringWithFormat:@"didDiscoverTagInfoEx, decodedTagData.DeviceSerialNumber = %@",decodedTagData.DeviceSerialNumber],
+                        [NSString stringWithFormat:@"didDiscoverTagInfoEx, decodedTagData.DecodedDataList = %@",decodedTagData.DecodedDataList]];
     [childViewController displayLog:string];
 //    [childViewController addLog:[NSString stringWithFormat:@"didDiscoverTagInfoEx, decodedTagData.TID = %@",decodedTagData.TID]];
 //    [childViewController addLog:[NSString stringWithFormat:@"didDiscoverTagInfoEx, decodedTagData.TagSerialNumber = %@",decodedTagData.TagSerialNumber]];
@@ -410,11 +423,11 @@
 
 -(void)didTagRemoved:(GNPTagInfo *)taginfo {
     NSString *string = [NSString stringWithFormat:@"%@\n%@\n%@\n%@\n%@",
-    [NSString stringWithFormat:@"didTagRemoved, taginfo.TagNumber = %d",taginfo.TagNumber],
-    [NSString stringWithFormat:@"didTagRemoved, taginfo.RSSI = %02X",taginfo.RSSI],
-    [NSString stringWithFormat:@"didTagRemoved, taginfo.Frequency = %f",[taginfo getFrequency]],
-    [NSString stringWithFormat:@"didTagRemoved, taginfo.EPCHexString = %@",taginfo.EPCHexString],
-    [NSString stringWithFormat:@"didTagRemoved, taginfo.TIDHexString = %@",taginfo.TIDHexString]];
+                        [NSString stringWithFormat:@"didTagRemoved, taginfo.TagNumber = %d",taginfo.TagNumber],
+                        [NSString stringWithFormat:@"didTagRemoved, taginfo.RSSI = %d",taginfo.RSSI],
+                        [NSString stringWithFormat:@"didTagRemoved, taginfo.Frequency = %f",[taginfo getFrequency]],
+                        [NSString stringWithFormat:@"didTagRemoved, taginfo.EPCHexString = %@",taginfo.EPCHexString],
+                        [taginfo.TIDHexString isEqual: @""] ? @"" : [NSString stringWithFormat:@"didDiscoverTagInfo, taginfo.TIDHexString = %@",taginfo.TIDHexString]];
     [childViewController displayLog:string];
 //    [childViewController addLog:[NSString stringWithFormat:@"didTagRemoved, taginfo.TagNumber = %d",taginfo.TagNumber]];
 //    [childViewController addLog:[NSString stringWithFormat:@"didTagRemoved, taginfo.RSSI = %02X",taginfo.RSSI]];

@@ -12,6 +12,9 @@
 #import "GNPTagInfo.h"
 #import "GNPDecodedTagData.h"
 
+#import "BLEInformation.h"
+#import "WiFiInformation.h"
+#import "NetworkInformation.h"
 #import "InetSocketAddress.h"
 
 NS_ASSUME_NONNULL_BEGIN
@@ -644,6 +647,23 @@ typedef NS_ENUM(Byte, RfSensitivityLevel){
  @param enable The setting to enable/disable the EPC normalization.
  */
 -(void)didGetEpcNormalize:(BOOL) enable;
+
+#pragma mark - Command Callback for TS100 with ESP32 module
+
+
+-(void)didGetWiFiTcpClient:(BOOL)enable remoteServerIp:(NSString*)remoteServerIp remoteServerPort:(NSString*)remoteServerPort connectionTimeout:(int)connectionTimeout;
+
+-(void)didGetWiFiHostName:(NSString*)hostName;
+
+-(void)didGetBleServiceMode:(BLEServiceMode)bleServiceMode;
+
+-(void)didGetBleMode:(BLEMode)bleMode;
+
+-(void)didGetBleInformation:(BLEInformation*)bleInformation;
+
+-(void)didGetWiFiInformation:(WiFiInformation*)wifiInformation;
+
+-(void)didGetNetworkInformation:(NetworkInformation*)networkInformation;
 
 #pragma mark - Special Command Callback
 
